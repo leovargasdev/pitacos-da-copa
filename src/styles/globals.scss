@@ -4,30 +4,33 @@
   box-sizing: border-box;
 }
 
-html {
-  @media (max-width: 1080px) {
-    font-size: 93.75%; // 15px
-  }
-
-  @media (max-width: 720px) {
-    font-size: 87.5%; // 14px
-  }
-}
-
 :root {
-  --background: #f5f6fa;
+  --background: #181829;
+  --background-secondary: #222232;
+  --background-tertiary: #2B2B3D;
 
-  --primary: #373D4F;
-  --secondary: #9098AE;
+  --text: #FFFFFF;
+  --text-secondary: #65656B;
+  --text-tertiary: #C4C4C4;
+
+  --green: #2BCF61;
+  --yellow: #FE9000;
+  --blue: #3590F3;
+  --link: #B5092F;
 }
 
 body {
+  color: rgba(var(--link), 0.5);
   background: var(--background);
 }
 
 body, button, textarea, input {
-  color: var(--primary);
-  font: 400 1rem "Roboto", sans-serif;
+  color: var(--text);
+  font: 400 1rem 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 600;
 }
 
 a {

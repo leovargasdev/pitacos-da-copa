@@ -1,0 +1,46 @@
+.layout__header {
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+
+  border-bottom: 1px solid var(--text-secondary);
+}
+
+.layout__headerContent {
+  display: flex;
+  align-items: center;
+
+  padding: 24px 0;
+
+  // background: gray;
+  width: 100%;
+  max-width: 1266px;
+
+  nav {
+    margin: 0 auto;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    column-gap: 64px;
+
+    li {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.signIn {
+  width: 140px;
+  height: 38px;
+  border-radius: 8px;
+
+  font-weight: 600;
+  text-align: center;
+
+  background: var(--link);
+}
