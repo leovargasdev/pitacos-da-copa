@@ -14,7 +14,7 @@ export const Header = () => (
 
       <nav>
         <ul>
-          <li>Home</li>
+          <li className={styles.active}>Home</li>
           <li>Grupos</li>
           <li>Ranking</li>
           <li>Perfil</li>

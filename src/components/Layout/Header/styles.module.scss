@@ -3,8 +3,8 @@
   
   display: flex;
   justify-content: center;
-
-  border-bottom: 1px solid var(--text-secondary);
+  background: var(--background-secondary);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .layout__headerContent {
@@ -28,8 +28,38 @@
     column-gap: 64px;
 
     li {
+      position: relative;
+      padding: 0 12px;
       font-size: 1.25rem;
       font-weight: 600;
+      text-transform: uppercase;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -47px;
+        right: 0;
+        left: 0;
+        
+        height: 3px;
+        width: 0;
+        margin: 0 auto;
+        background: var(--link);
+
+        transition: width 0.4s;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      &.active {
+        color: var(--link);
+
+        &::after {
+          width: 100%;
+        }
+      }
     }
   }
 }

@@ -1,3 +1,117 @@
 .container {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 48px;
+}
 
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: 32px;
+  width: 100%;
+
+  h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 16px;
+  }
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--background-secondary);
+
+  time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6px;
+
+    padding: 18px 32px;
+    background: var(--background-tertiary);
+
+    span {
+      display: flex;
+      align-items: center;
+      column-gap: 4px;
+
+      font-size: 1rem;
+      color: var(--text-tertiary);
+    }
+  }
+
+  > div {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .team {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+
+      strong {
+        font-size: 1.5rem;
+      }
+    }
+
+    .score {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 20px;
+
+      width: 200px;
+
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      font-family: 'Andika', sans-serif;
+
+      p {
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: var(--background-tertiary);
+      }
+
+      p.winner {
+        color: var(--text);
+        border: 1px solid #0b9237;
+      }
+
+      p.loser {
+        color: var(--text);
+        border: 1px solid var(--link);
+      }
+    }
+  }
+}
+
+.team__image {
+  // width: 46px;
+  // height: 32px;
+  // border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
 }
