@@ -4,10 +4,11 @@ import styles from './styles.module.scss'
 interface CardTeamProps {
   name: string
   image: string
-  score?: number
+  score: number
+  isFinished: boolean
 }
 
-export const CardTeam = ({ name, image, score }: CardTeamProps) => (
+export const CardTeam = ({ name, image, score, isFinished }: CardTeamProps) => (
   <div className={styles.card}>
     <div className={styles.card__content}>
       <div className={styles.image}>
@@ -17,6 +18,6 @@ export const CardTeam = ({ name, image, score }: CardTeamProps) => (
       </div>
       <strong>{name}</strong>
     </div>
-    <span className={styles.score}>{score || '-'}</span>
+    <span className={styles.score}>{isFinished ? score : '-'}</span>
   </div>
 )
