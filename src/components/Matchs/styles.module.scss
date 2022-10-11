@@ -21,22 +21,30 @@
   justify-content: space-between;
 
   width: 100%;
-  padding: 16px 32px;
+  padding: 12px 32px;
   background: rgba(#421029, 0.4);
 
-  span {
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-transform: uppercase;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2px;
+
+    span {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  
+    time {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      font-size: 1rem;
+      color: rgba(222, 222, 222, 0.9);
+    }
   }
 
-  time {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    font-size: 1rem;
-    color: rgba(222, 222, 222, 0.9);
-  }
 }
 
 .match__content {
@@ -49,14 +57,15 @@
 }
 
 .bet {
-  width: calc(100% - 64px);
-
-  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  padding: 0 24px;
+  height: 100%;
   border-radius: 4px;
   background: var(--link);
 
   font-size: 1.125rem;
   font-weight: 700;
   font-family: 'Andika';
-  text-transform: uppercase;
 }
