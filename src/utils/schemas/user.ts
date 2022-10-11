@@ -18,6 +18,11 @@ export const UserSchema = new Schema<User>(
       type: String,
       required: true,
       default: 'participant'
+    },
+    score: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
   {

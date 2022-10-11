@@ -3,24 +3,9 @@ import { BiWorld } from 'react-icons/bi'
 
 import styles from './styles.module.scss'
 
-const teams = [
-  'Catar',
-  'Equador',
-  'Holanda',
-  'Senegal',
-  'Estados Unidos',
-  'Inglaterra',
-  'Irã',
-  'País de Gales',
-  'Arábia Saudita',
-  'Argentina',
-  'México',
-  'Polônia',
-  'Dinamarca',
-  'Austrália',
-  'França',
-  'Tunísia'
-]
+import teams from 'data/team.json'
+
+const teamsSlugs = Object.keys(teams)
 
 export const ListTeams = () => (
   <div className={styles.teams}>
@@ -30,17 +15,12 @@ export const ListTeams = () => (
     </h1>
 
     <ul>
-      {teams.map(team => (
-        <li key={team} className={styles.team}>
+      {teamsSlugs.map((team: string) => (
+        <li key={teams[team].id} className={styles.team}>
           <div className={styles.team__image}>
-            {/* <Image
-            src="/escudos/brasil.png"
-            layout="fill"
-            objectFit="contain"
-          /> */}
-            <Image src="/teams/brazil.svg" layout="fill" objectFit="cover" />
+            <Image src={teams[team].image} layout="fill" objectFit="cover" />
           </div>
-          <strong>{team}</strong>
+          <strong>{teams[team].name}</strong>
         </li>
       ))}
     </ul>

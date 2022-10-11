@@ -1,12 +1,20 @@
 import Image from 'next/image'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { HiOutlineClock, HiCalendar } from 'react-icons/hi'
 
+import api from 'service/api'
 import { ListTeams } from 'components/ListTeams'
+import { MatchModel, connectMongoose } from 'service/mongoose'
 
+import { Match } from 'types'
+import teams from 'data/team.json'
 import styles from 'styles/home.module.scss'
 
-const HomePage: NextPage = () => (
+interface PageProps {
+  matchs: Match[]
+}
+
+const HomePage: NextPage<PageProps> = ({ matchs }) => (
   <div className={styles.container}>
     <ListTeams />
 
@@ -14,8 +22,8 @@ const HomePage: NextPage = () => (
       <h1>Lista dos jogos</h1>
 
       <ul>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map(game => (
-          <li key={game} className={styles.game}>
+        {matchs.map(match => (
+          <li key={match._id} className={styles.game}>
             <time>
               <span>
                 <HiCalendar /> 02/12
@@ -27,35 +35,31 @@ const HomePage: NextPage = () => (
 
             <div>
               <div className={styles.team}>
-                <strong>Brasil</strong>
+                <strong>{teams[match.team_a]?.name}</strong>
                 <div className={styles.team__image}>
                   <Image
-                    src="/teams/brazil.svg"
                     layout="fill"
                     objectFit="cover"
+                    src={teams[match.team_a]?.image}
                   />
                 </div>
               </div>
 
               <div className={styles.score}>
-                <p className={game === 2 ? styles.winner : ''}>
-                  {game === 2 ? 7 : '-'}
-                </p>
+                <p>-</p>
                 <strong>x</strong>
-                <p className={game === 2 ? styles.loser : ''}>
-                  {game === 2 ? 1 : '-'}
-                </p>
+                <p>-</p>
               </div>
 
               <div className={styles.team}>
                 <div className={styles.team__image}>
                   <Image
-                    src="/teams/alemanha.svg"
+                    src={teams[match.team_b]?.image}
                     layout="fill"
                     objectFit="cover"
                   />
                 </div>
-                <strong>Alemanha</strong>
+                <strong>{teams[match.team_b]?.name}</strong>
               </div>
             </div>
           </li>
@@ -64,5 +68,27 @@ const HomePage: NextPage = () => (
     </div>
   </div>
 )
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  await connectMongoose()
+
+  const matchs = await MatchModel.find()
+
+  const aa = matchs.map(match => ({
+    ...match._doc,
+    _id: match._doc._id.toString(),
+    date: match._doc.date.toString(),
+    createdAt: match._doc.createdAt.toString(),
+    updatedAt: match._doc.updatedAt.toString()
+  }))
+
+  console.log(aa)
+
+  return {
+    props: {
+      matchs: aa
+    }
+  }
+}
 
 export default HomePage

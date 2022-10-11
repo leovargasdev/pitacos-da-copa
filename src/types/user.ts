@@ -8,4 +8,5 @@ export interface User {
   email: string
   image: string
   role: UserRole
+  score: number
 }
