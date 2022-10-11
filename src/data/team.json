@@ -12,7 +12,8 @@
   "argentina": {
     "name": "Argentina",
     "id": "argentina",
-    "image": "/team/argentina.svg"
+    "image": "/team/argentina.svg",
+    "players": []
   },
   "australia": {
     "name": "Austrália",

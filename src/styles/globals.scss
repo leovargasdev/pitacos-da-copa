@@ -5,27 +5,27 @@
 }
 
 :root {
-  --background: #181829;
-  --background-secondary: #222232;
-  --background-tertiary: #2B2B3D;
+  --background: #79083E;
+  --background-dark: #570A31;
+  --background-card: rgba(#421029, 0.8);
 
-  --text: #FFFFFF;
-  --text-secondary: #65656B;
-  --text-tertiary: #C4C4C4;
+  --primary: #FAF4E1;
+
+  --link: #421029;
 
   --green: #2BCF61;
   --yellow: #FE9000;
   --blue: #3590F3;
-  --link: #B5092F;
+  // --link: #B5092F;
 }
 
 body {
-  color: rgba(var(--link), 0.5);
+  color: var(--primary);
   background: var(--background);
 }
 
 body, button, textarea, input {
-  color: var(--text);
+  color: var(--primary);
   font: 400 1rem 'Source Sans Pro', sans-serif;
 }
 

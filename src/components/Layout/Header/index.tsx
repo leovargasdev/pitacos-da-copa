@@ -11,13 +11,7 @@ export const Header = () => {
   return (
     <header className={styles.layout__header}>
       <div className={styles.layout__headerContent}>
-        <Image
-          src="/logo.png"
-          width={140}
-          height={70}
-          layout="intrinsic"
-          objectFit="contain"
-        />
+        <span>Logo</span>
 
         <nav>
           <ul>
@@ -28,19 +22,19 @@ export const Header = () => {
           </ul>
         </nav>
 
-        {user ? (
+        {/* {user ? (
           <button
             type="button"
             className={styles.signIn}
             onClick={() => signOut()}
           >
-            Sair {user.name}
+            Sair
           </button>
         ) : (
           <Link href="/login">
             <a className={styles.signIn}>Acessar conta</a>
           </Link>
-        )}
+        )} */}
       </div>
     </header>
   )

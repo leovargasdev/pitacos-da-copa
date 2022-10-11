@@ -1,0 +1,72 @@
+[
+  {
+      "teamA": {
+          "name": "Brasil",
+          "image": "/team/brasil.svg",
+          "score": 2
+      },
+      "teamB": {
+          "name": "Alemanha",
+          "image": "/team/alemanha.svg",
+          "score": 5
+      },
+      "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "status": "active"
+  },
+  {
+      "teamA": {
+          "name": "Arábia_Saudita",
+          "image": "/team/arabia-saudita.svg",
+          "score": 2
+      },
+      "teamB": {
+          "name": "Argentina",
+          "image": "/team/argentina.svg",
+          "score": 5
+      },
+      "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "status": "fineshed"
+  },
+  {
+      "teamA": {
+          "name": "Catar",
+          "image": "/team/Catar.svg",
+          "score": 2
+      },
+      "teamB": {
+          "name": "Canadá",
+          "image": "/team/canada.svg",
+          "score": 5
+      },
+      "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "status": "active"
+  },
+  {
+      "teamA": {
+          "name": "Camarões",
+          "image": "/team/camaroes.svg",
+          "score": 2
+      },
+      "teamB": {
+          "name": "Espanha",
+          "image": "/team/Espanha.svg",
+          "score": 5
+      },
+      "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "status": "active"
+  },
+  {
+      "teamA": {
+          "name": "Holanda",
+          "image": "/team/Holanda.svg",
+          "score": 2
+      },
+      "teamB": {
+          "name": "Japao",
+          "image": "/team/Japao.svg",
+          "score": 5
+      },
+      "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "status": "fineshed"
+  }
+]

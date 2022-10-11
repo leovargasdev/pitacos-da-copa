@@ -3,7 +3,7 @@
   
   display: flex;
   justify-content: center;
-  background: var(--background-secondary);
+  background: var(--background-dark);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
@@ -53,13 +53,13 @@
         width: 100%;
       }
 
-      &.active {
-        color: var(--link);
+      // &.active {
+      //   color: var(--link);
 
-        &::after {
-          width: 100%;
-        }
-      }
+      //   &::after {
+      //     width: 100%;
+      //   }
+      // }
     }
   }
 }
