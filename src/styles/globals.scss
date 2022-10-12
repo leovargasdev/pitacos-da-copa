@@ -7,7 +7,7 @@
 :root {
   --background: #79083E;
   --background-dark: #570A31;
-  --background-card: rgba(#421029, 0.8);
+  --background-card: #42102934;
 
   --primary: #FAF4E1;
 
@@ -40,6 +40,7 @@ a {
 
 button {
   border: 0;
+  background: transparent;
 
   &:hover {
     cursor: pointer;
