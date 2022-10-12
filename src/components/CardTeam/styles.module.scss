@@ -4,7 +4,7 @@
 }
 
 .score {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: 'Andika';
 }
 
@@ -18,7 +18,7 @@
 
   strong {
     z-index: 2;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     text-transform: capitalize;
   }
 
@@ -29,7 +29,7 @@
     margin: auto 0;
 
     width: 94%;
-    height: 56px;
+    height: 46px;
     background: var(--background-dark);
     // clip-path: polygon(10% 0%, 100% 0%, 92% 100%, 10% 100%);
     clip-path: polygon(96% 0%, 100% 50%, 96% 100%, 10% 100%, 10% 50%, 10% 0%);
@@ -41,8 +41,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 120px;
-  height: 70px;
+  width: 96px;
+  height: 56px;
   position: relative;
   
   .image__content {
