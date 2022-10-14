@@ -5,15 +5,14 @@
     "image": "/team/alemanha.svg"
   },
   "arabia-saudita": {
-    "name": "Arábia_Saudita",
+    "name": "Arábia Saudita",
     "id": "arabia-saudita",
     "image": "/team/arabia-saudita.svg"
   },
   "argentina": {
     "name": "Argentina",
     "id": "argentina",
-    "image": "/team/argentina.svg",
-    "players": []
+    "image": "/team/argentina.svg"
   },
   "australia": {
     "name": "Austrália",
@@ -43,112 +42,112 @@
   "catar": {
     "name": "Catar",
     "id": "Catar",
-    "image": "/team/Catar.svg"
+    "image": "/team/catar.svg"
   },
   "Coreia_do_Sul": {
-    "name": "Coreia_do_Sul",
-    "id": "Coreia_do_Sul",
-    "image": "/team/Coreia_do_Sul.svg"
+    "name": "Coreia do Sul",
+    "id": "coreia-do-sul",
+    "image": "/team/coreia-do-sul.svg"
   },
   "Costa_Rica": {
-    "name": "Costa_Rica",
-    "id": "Costa_Rica",
-    "image": "/team/Costa_Rica.svg"
+    "name": "Costa Rica",
+    "id": "costa-rica",
+    "image": "/team/costa-rica.svg"
   },
   "Croácia": {
     "name": "Croácia",
-    "id": "Croácia",
-    "image": "/team/Croácia.svg"
+    "id": "croacia",
+    "image": "/team/croacia.svg"
   },
   "Dinamarca": {
     "name": "Dinamarca",
-    "id": "Dinamarca",
-    "image": "/team/Dinamarca.svg"
+    "id": "dinamarca",
+    "image": "/team/dinamarca.svg"
   },
   "Equador": {
     "name": "Equador",
-    "id": "Equador",
-    "image": "/team/Equador.svg"
+    "id": "equador",
+    "image": "/team/equador.svg"
   },
   "espanha": {
     "name": "Espanha",
     "id": "espanha",
-    "image": "/team/Espanha.svg"
+    "image": "/team/espanha.svg"
   },
   "Estados_Unidos": {
-    "name": "Estados_Unidos",
-    "id": "Estados_Unidos",
-    "image": "/team/Estados_Unidos.svg"
+    "name": "Estados Unidos",
+    "id": "eua",
+    "image": "/team/eua.svg"
   },
   "França": {
     "name": "França",
-    "id": "França",
-    "image": "/team/França.svg"
+    "id": "franca",
+    "image": "/team/franca.svg"
   },
   "Gana": {
     "name": "Gana",
-    "id": "Gana",
-    "image": "/team/Gana.svg"
+    "id": "gana",
+    "image": "/team/gana.svg"
   },
   "holanda": {
     "name": "Holanda",
     "id": "holanda",
-    "image": "/team/Holanda.svg"
+    "image": "/team/holanda.svg"
   },
   "Inglaterra": {
     "name": "Inglaterra",
-    "id": "Inglaterra",
-    "image": "/team/Inglaterra.svg"
+    "id": "inglaterra",
+    "image": "/team/inglaterra.svg"
   },
   "Irã": {
     "name": "Irã",
-    "id": "Irã",
-    "image": "/team/Irã.svg"
+    "id": "ira",
+    "image": "/team/ira.svg"
   },
   "japao": {
-    "name": "Japao",
+    "name": "Japão",
     "id": "japao",
-    "image": "/team/Japao.svg"
+    "image": "/team/japao.svg"
   },
   "Marrocos": {
     "name": "Marrocos",
-    "id": "Marrocos",
-    "image": "/team/Marrocos.svg"
+    "id": "marrocos",
+    "image": "/team/marrocos.svg"
   },
   "México": {
     "name": "México",
-    "id": "México",
-    "image": "/team/México.svg"
+    "id": "mexico",
+    "image": "/team/mexico.svg"
   },
   "País_de_Gales": {
-    "name": "País_de_Gales",
-    "id": "País_de_Gales",
-    "image": "/team/País_de_Gales.svg"
+    "name": "País de Gales",
+    "id": "pais-de-gales",
+    "image": "/team/pais-de-gales.svg"
   },
   "Polonia_Rl0m1A5": {
-    "name": "Polonia_Rl0m1A5",
-    "id": "Polonia_Rl0m1A5",
-    "image": "/team/Polonia_Rl0m1A5.svg"
+    "name": "Polônia",
+    "id": "polonia",
+    "image": "/team/polonia.svg"
   },
   "Portugal": {
     "name": "Portugal",
-    "id": "Portugal",
-    "image": "/team/Portugal.svg"
+    "id": "portugal",
+    "image": "/team/portugal.svg"
   },
   "Senegal": {
     "name": "Senegal",
-    "id": "Senegal",
-    "image": "/team/Senegal.svg"
+    "id": "senegal",
+    "image": "/team/senegal.svg"
   },
   "Servia": {
-    "name": "Servia",
-    "id": "Servia",
-    "image": "/team/Servia.svg"
+    "name": "Sérvia",
+    "id": "servia",
+    "image": "/team/servia.svg"
   },
   "Suíça": {
     "name": "Suíça",
-    "id": "Suíça",
-    "image": "/team/Suíça.svg"
+    "id": "suica",
+    "image": "/team/suica.svg"
   },
   "tunisia": {
     "name": "Tunísia",
