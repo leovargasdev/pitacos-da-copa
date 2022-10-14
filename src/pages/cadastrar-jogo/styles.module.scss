@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+  .button__submit {
+    font-weight: 500;
+    padding: 14px 48px;
+    cursor: pointer;
+    border-radius: 4px;
+    background: var(--background-dark);
+
+    transition: all 0.4s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}
+
+.matches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  list-style: none;
+}

@@ -1,72 +1,67 @@
 [
   {
       "teamA": {
-          "name": "Brasil",
-          "image": "/team/brasil.svg",
+          "id": "brasil",
           "score": 9
       },
       "teamB": {
-          "name": "Alemanha",
-          "image": "/team/alemanha.svg",
+          "id": "alemanha",
           "score": 2
       },
       "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "type": "Grupo A",
       "status": "active"
   },
   {
       "teamA": {
-          "name": "Arábia Saudita",
-          "image": "/team/arabia-saudita.svg",
+          "id": "arabia-saudita",
           "score": 5
       },
       "teamB": {
-          "name": "Argentina",
-          "image": "/team/argentina.svg",
+          "id": "argentina",
           "score": 5
       },
       "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "type": "Grupo E",
       "status": "finished"
   },
   {
       "teamA": {
-          "name": "Catar",
-          "image": "/team/Catar.svg",
+          "id": "catar",
           "score": 0
       },
       "teamB": {
-          "name": "Canadá",
-          "image": "/team/canada.svg",
+          "id": "canada",
           "score": 0
       },
       "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "type": "Grupo D",
       "status": "active"
   },
   {
       "teamA": {
-          "name": "Camarões",
-          "image": "/team/camaroes.svg",
+          "id": "camaroes",
           "score": 1
       },
       "teamB": {
-          "name": "Espanha",
-          "image": "/team/Espanha.svg",
+          "id": "espanha",
           "score": 2
       },
       "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "type": "Grupo B",
       "status": "active"
   },
   {
       "teamA": {
-          "name": "Holanda",
-          "image": "/team/Holanda.svg",
+          "id": "holanda",
           "score": 1
       },
       "teamB": {
-          "name": "Japao",
-          "image": "/team/Japao.svg",
+          "id": "japao",
           "score": 0
       },
       "date": "Tue Oct 11 2022 13:52:07 GMT-0300 (Horário Padrão de Brasília)",
+      "type": "Grupo A",
       "status": "finished"
   }
 ]

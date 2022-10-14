@@ -11,24 +11,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const session = await getSession({ req })
+    console.log('chegoooooooou na api', req.body)
+    // const session = await getSession({ req })
 
-    if (!session?.user) {
-      return res.status(401).send('Unauthorized')
-    }
+    // if (!session?.user) {
+    //   return res.status(401).send('Unauthorized')
+    // }
 
     await connectMongoose()
 
-    await MatchModel.create({
-      team_a: 'brasil',
-      team_b: 'alemanha',
-      score_team_a: 0,
-      score_team_b: 0,
-      type: 'group-a',
-      date: new Date()
-    })
+    const match = await MatchModel.create(req.body)
 
-    return res.status(200).json({ ok: true })
+    return res.status(200).json({
+      _id: match._id.toString(),
+      ...req.body
+    })
   } catch (err) {
     console.log(err)
 

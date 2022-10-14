@@ -1,7 +1,8 @@
+import Image from 'next/image'
 import matches from 'data/matches.json'
+import teams from 'data/teams.json'
 
 import styles from './styles.module.scss'
-import Image from 'next/image'
 
 export const ListMatches = () => (
   <section className={styles.matches}>
@@ -15,19 +16,29 @@ export const ListMatches = () => (
 
         <div className={styles.team}>
           <div className={styles.team__image}>
-            <Image src={match.teamA.image} layout="fill" objectFit="cover" />
+            <Image
+              src={teams[match.teamA.id].image}
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
-          <strong>{match.teamA.name}</strong>
-          <span>{match.teamA.score}</span>
+
+          <strong>{teams[match.teamA.id].name}</strong>
+          <span>{match.teamB.score}</span>
         </div>
 
         <span>VS</span>
 
         <div className={`${styles.team} ${styles.reverse}`}>
           <div className={styles.team__image}>
-            <Image src={match.teamB.image} layout="fill" objectFit="cover" />
+            <Image
+              src={teams[match.teamB.id].image}
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
-          <strong>{match.teamB.name}</strong>
+
+          <strong>{teams[match.teamB.id].name}</strong>
           <span>{match.teamB.score}</span>
         </div>
 

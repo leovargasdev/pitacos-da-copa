@@ -1,0 +1,47 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 250px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background: var(--background-dark);
+
+  font-size: 1.25rem;
+
+  .trigger__icon {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.content {
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--background-dark);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.viewport {
+  padding: 0 8px;
+}
+
+.item {
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  height: 50px;
+  outline: none;
+  padding: 0 16px;
+  user-select: none;
+  border-radius: 4px;
+
+  &:hover, &:focus {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

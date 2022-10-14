@@ -1,0 +1,16 @@
+.input {
+  outline: 0;
+  border: 0;
+  
+  padding: 14px 24px;
+  border-radius: 4px;
+  background: var(--background-dark);
+
+  &[type="datetime-local"] {
+    cursor: pointer;
+  }
+
+  &::placeholder {
+    color: var(--secondary);
+  }
+}

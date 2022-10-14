@@ -41,30 +41,30 @@
   },
   "catar": {
     "name": "Catar",
-    "id": "Catar",
+    "id": "catar",
     "image": "/team/catar.svg"
   },
-  "Coreia_do_Sul": {
+  "coreia-do-sul": {
     "name": "Coreia do Sul",
     "id": "coreia-do-sul",
     "image": "/team/coreia-do-sul.svg"
   },
-  "Costa_Rica": {
+  "costa-rica": {
     "name": "Costa Rica",
     "id": "costa-rica",
     "image": "/team/costa-rica.svg"
   },
-  "Croácia": {
+  "croacia": {
     "name": "Croácia",
     "id": "croacia",
     "image": "/team/croacia.svg"
   },
-  "Dinamarca": {
+  "dinamarca": {
     "name": "Dinamarca",
     "id": "dinamarca",
     "image": "/team/dinamarca.svg"
   },
-  "Equador": {
+  "equador": {
     "name": "Equador",
     "id": "equador",
     "image": "/team/equador.svg"
@@ -74,17 +74,17 @@
     "id": "espanha",
     "image": "/team/espanha.svg"
   },
-  "Estados_Unidos": {
+  "eua": {
     "name": "Estados Unidos",
     "id": "eua",
     "image": "/team/eua.svg"
   },
-  "França": {
+  "franca": {
     "name": "França",
     "id": "franca",
     "image": "/team/franca.svg"
   },
-  "Gana": {
+  "gana": {
     "name": "Gana",
     "id": "gana",
     "image": "/team/gana.svg"
@@ -94,12 +94,12 @@
     "id": "holanda",
     "image": "/team/holanda.svg"
   },
-  "Inglaterra": {
+  "inglaterra": {
     "name": "Inglaterra",
     "id": "inglaterra",
     "image": "/team/inglaterra.svg"
   },
-  "Irã": {
+  "ira": {
     "name": "Irã",
     "id": "ira",
     "image": "/team/ira.svg"
@@ -109,42 +109,42 @@
     "id": "japao",
     "image": "/team/japao.svg"
   },
-  "Marrocos": {
+  "marrocos": {
     "name": "Marrocos",
     "id": "marrocos",
     "image": "/team/marrocos.svg"
   },
-  "México": {
+  "mexico": {
     "name": "México",
     "id": "mexico",
     "image": "/team/mexico.svg"
   },
-  "País_de_Gales": {
+  "pais-de-gales": {
     "name": "País de Gales",
     "id": "pais-de-gales",
     "image": "/team/pais-de-gales.svg"
   },
-  "Polonia_Rl0m1A5": {
+  "polonia": {
     "name": "Polônia",
     "id": "polonia",
     "image": "/team/polonia.svg"
   },
-  "Portugal": {
+  "portugal": {
     "name": "Portugal",
     "id": "portugal",
     "image": "/team/portugal.svg"
   },
-  "Senegal": {
+  "senegal": {
     "name": "Senegal",
     "id": "senegal",
     "image": "/team/senegal.svg"
   },
-  "Servia": {
+  "servia": {
     "name": "Sérvia",
     "id": "servia",
     "image": "/team/servia.svg"
   },
-  "Suíça": {
+  "suica": {
     "name": "Suíça",
     "id": "suica",
     "image": "/team/suica.svg"
