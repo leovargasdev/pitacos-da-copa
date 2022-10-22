@@ -1,17 +1,20 @@
 import { IoMdFootball } from 'react-icons/io'
 import { CardTeam } from 'components/CardTeam'
 
-import matches from 'data/matches.json'
-
+import { Match } from 'types'
 import styles from './styles.module.scss'
 
-export const GridMatches = () => (
+interface PageProps {
+  matches: Match[]
+}
+
+export const GridMatches = ({ matches }: PageProps) => (
   <section className={styles.matchs}>
     {matches.map(match => (
-      <article key={match.date} className={styles.match}>
+      <article key={match._id} className={styles.match}>
         <header className={styles.match__header}>
           <div>
-            <span>Grupo A</span>
+            <span>{match.type}</span>
             <time>Dom 15/07 12h00</time>
           </div>
 

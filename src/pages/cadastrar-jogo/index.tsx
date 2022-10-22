@@ -1,11 +1,12 @@
+import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Input, SelectTeams, UpdateMatch } from 'components/Form'
 
-import styles from './styles.module.scss'
 import api from 'service/api'
-import { useState } from 'react'
 import { Match } from 'types'
 import matchesMock from 'data/matches.json'
+
+import styles from './styles.module.scss'
 
 const CreateGamePape = () => {
   const [matches, setMatches] = useState<Match[]>(
