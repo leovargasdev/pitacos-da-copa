@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta property="og:type" content="website" />
           <meta property="og:locale" content="pt_BR" />
-          <meta property="og:site_name" content="App Wordl Cup" />
+          <meta property="og:site_name" content="Pitacos da Copa" />
           <meta name="author" content="Leonardo Luis de Vargas" />
           <link
             href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Andika:wght@700&display=swap"

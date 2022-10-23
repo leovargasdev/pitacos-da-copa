@@ -1,5 +1,9 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://www.pitacosdacopa.com/
+
+# Sitemaps
+Sitemap: https://www.pitacosdacopa.com/sitemap.xml

@@ -10,8 +10,9 @@ interface SEOProps {
 
 export const SEO = ({ tabName, title, description, image = '' }: SEOProps) => {
   const { asPath } = useRouter()
+  const url = 'https://www.pitacosdacopa.com'.concat(asPath)
 
-  const titleTab = `${tabName} • App Copa`
+  const titleTab = `${tabName} • Pitacos da Copa 2022`
 
   return (
     <Head>
@@ -21,7 +22,7 @@ export const SEO = ({ tabName, title, description, image = '' }: SEOProps) => {
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content="APP COPA" />
+      <meta property="og:url" content={url} />
 
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
