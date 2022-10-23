@@ -18,6 +18,6 @@ export const CardTeam = ({ name, image, score, isFinished }: CardTeamProps) => (
       </div>
       <strong>{name}</strong>
     </div>
-    <span className={styles.score}>{isFinished ? score : '-'}</span>
+    <span className={styles.score}>{score || '-'}</span>
   </div>
 )

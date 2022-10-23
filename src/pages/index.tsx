@@ -1,12 +1,10 @@
 import { GetServerSideProps, NextPage } from 'next'
 
-import teams from 'data/teams.json'
-import matchesMock from 'data/matches.json'
-
-import { Match, TeamId } from 'types'
-import { BetProvider } from 'hook/useBet'
-import { GridMatches, ListMatches } from 'components/Matches'
+import { Match } from 'types'
 import { SEO } from 'components/SEO'
+import { BetProvider } from 'hook/useBet'
+import { getMatches } from 'utils/format/match'
+import { GridMatches, ListMatches } from 'components/Matches'
 
 interface PageProps {
   matches: Match[]
@@ -26,20 +24,8 @@ const HomePage: NextPage<PageProps> = ({ matches }) => (
 )
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const result = matchesMock.map(match => ({
-    ...match,
-    teamA: {
-      score: match.teamA.score,
-      ...teams[match.teamA.id as TeamId]
-    },
-    teamB: {
-      score: match.teamB.score,
-      ...teams[match.teamB.id as TeamId]
-    },
-    date: match.date
-  }))
-
-  return { props: { matches: result } }
+  const matches = await getMatches('detailed')
+  return { props: { matches } }
 }
 
 export default HomePage

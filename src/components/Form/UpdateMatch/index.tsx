@@ -1,14 +1,22 @@
 import { Match } from 'types'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import styles from './styles.module.scss'
+import api from 'service/api'
 import { Input } from '../Input'
+import styles from './styles.module.scss'
 
 export const UpdateMatch = (match: Match) => {
   const formMethods = useForm({ mode: 'all', defaultValues: match })
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const onSubmit = async (data: any) => {
+    const updateMatch = {
+      ...match,
+      type: data.type,
+      teamA: { ...match.teamA, score: Number(data.teamA.score) },
+      teamB: { ...match.teamB, score: Number(data.teamB.score) }
+    }
+
+    await api.put('/match', updateMatch)
   }
 
   return (

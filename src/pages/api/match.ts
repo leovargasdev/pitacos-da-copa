@@ -8,7 +8,7 @@ import {
 } from 'service/mongoose'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
+  if (!['POST', 'PUT'].includes(String(req.method))) {
     res.setHeader('Allow', 'POST')
     res.status(405).end('Method not allowed')
     return
@@ -21,16 +21,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
+    let _id = req.body?._id || ''
+
     await connectMongoose()
 
-    const match = await MatchModel.create(req.body)
+    if (req.method === 'PUT') {
+      await MatchModel.updateOne({ _id }, req.body)
+    } else {
+      const match = await MatchModel.create(req.body)
+      _id = match._id.toString()
+    }
 
     await disconnectMongoose()
 
-    return res.status(200).json({
-      _id: match._id.toString(),
-      ...req.body
-    })
+    return res.status(200).json({ _id, ...req.body })
   } catch (err) {
     console.log(err)
 

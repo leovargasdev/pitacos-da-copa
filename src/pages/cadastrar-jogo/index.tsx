@@ -1,17 +1,21 @@
 import { useState } from 'react'
+import { getSession } from 'next-auth/react'
+import { GetServerSideProps, NextPage } from 'next'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Input, SelectTeams, UpdateMatch } from 'components/Form'
 
 import api from 'service/api'
 import { Match } from 'types'
-import matchesMock from 'data/matches.json'
+import { getMatches } from 'utils/format/match'
+import { Input, SelectTeams, UpdateMatch } from 'components/Form'
 
 import styles from './styles.module.scss'
 
-const CreateGamePape = () => {
-  const [matches, setMatches] = useState<Match[]>(
-    matchesMock as unknown as Match[]
-  )
+interface PageProps {
+  matches: Match[]
+}
+
+const CreateMatchesPape: NextPage<PageProps> = ({ matches: data }) => {
+  const [matches, setMatches] = useState<Match[]>(data)
 
   const formMethods = useForm({
     mode: 'all',
@@ -64,19 +68,6 @@ const CreateGamePape = () => {
         {matches.map(match => (
           <li key={match._id}>
             <UpdateMatch {...match} />
-            {/* <input defaultValue={match.type} />
-
-            <div className={styles.team}>
-              <strong>{match.teamA.id}</strong>
-              <input defaultValue={match.teamA.score} />
-            </div>
-            <div className={styles.team}>
-              <strong>{match.teamB.id}</strong>
-              <input defaultValue={match.teamB.score} />
-            </div>
-            <button className={styles.button__submit} type="submit">
-              Atualizar jogo
-            </button> */}
           </li>
         ))}
       </ul>
@@ -84,4 +75,21 @@ const CreateGamePape = () => {
   )
 }
 
-export default CreateGamePape
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const session = await getSession(ctx)
+
+  if (session?.user && session.user.role !== 'admin') {
+    return {
+      props: {},
+      redirect: {
+        destination: '/'
+      }
+    }
+  }
+
+  const matches = await getMatches('normal')
+
+  return { props: { matches } }
+}
+
+export default CreateMatchesPape

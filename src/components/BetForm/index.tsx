@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import { FormProvider, useForm } from 'react-hook-form'
 
@@ -10,10 +11,9 @@ export const BetForm = () => {
 
   const formMethods = useForm()
 
-  const handleSubmit = (data: any) => {
-    onSubmit(data)
+  useEffect(() => {
     formMethods.reset()
-  }
+  }, [selectedMatch])
 
   return (
     <div className={styles.container} aria-hidden={!isOpen}>
@@ -21,7 +21,7 @@ export const BetForm = () => {
         <FormProvider {...formMethods}>
           <form
             className={styles.form}
-            onSubmit={formMethods.handleSubmit(handleSubmit)}
+            onSubmit={formMethods.handleSubmit(onSubmit)}
           >
             <button
               type="button"
