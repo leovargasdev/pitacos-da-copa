@@ -1,8 +1,10 @@
-import { Match } from 'types'
 import Image from 'next/image'
-import styles from './styles.module.scss'
-import { useBet } from 'hook/useBet'
 
+import { Match } from 'types'
+import { useBet } from 'hook/useBet'
+import { formatDate } from 'utils/format/date'
+
+import styles from './styles.module.scss'
 interface PageProps {
   matches: Match[]
 }
@@ -15,9 +17,9 @@ export const ListMatches = ({ matches }: PageProps) => {
       {matches.map(match => (
         <article key={match._id} className={styles.match}>
           <time className={styles.match__date}>
-            Dom, 12/12
+            {formatDate(match.date, 'normal')}
             <br />
-            14h30min
+            {match.status === 'finished' && 'encerrado'}
           </time>
 
           <div className={styles.team}>

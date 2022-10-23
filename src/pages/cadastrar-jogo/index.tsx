@@ -78,7 +78,7 @@ const CreateMatchesPape: NextPage<PageProps> = ({ matches: data }) => {
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const session = await getSession(ctx)
 
-  if (session?.user && session.user.role !== 'admin') {
+  if (session?.user || session.user.role !== 'admin') {
     return {
       props: {},
       redirect: {

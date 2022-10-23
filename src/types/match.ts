@@ -9,6 +9,6 @@ export interface Match {
   teamA: TeamMatch
   teamB: TeamMatch
   type: string
-  date: Date
+  date: string
   status: 'active' | 'finished'
 }

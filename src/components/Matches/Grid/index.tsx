@@ -4,6 +4,7 @@ import { CardTeam } from 'components/CardTeam'
 import { Match } from 'types'
 import styles from './styles.module.scss'
 import { useBet } from 'hook/useBet'
+import { formatDate } from 'utils/format/date'
 
 interface PageProps {
   matches: Match[]
@@ -19,7 +20,9 @@ export const GridMatches = ({ matches }: PageProps) => {
           <header className={styles.match__header}>
             <div>
               <span>{match.type}</span>
-              <time>Dom 15/07 12h00</time>
+              <time dateTime={new Date(match.date).toISOString()}>
+                {formatDate(match.date, 'normal2')}
+              </time>
             </div>
 
             <button className={styles.bet} onClick={() => handleOpenBet(match)}>

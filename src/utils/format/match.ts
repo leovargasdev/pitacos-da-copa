@@ -10,7 +10,11 @@ type TypeList = 'normal' | 'detailed'
 
 export const getMatches = async (typeList: TypeList): Promise<Match[]> => {
   await connectMongoose()
-  const matches = await MatchModel.find()
+  const matches = await MatchModel.find(
+    {},
+    {},
+    { sort: { status: 1, date: 1 } }
+  )
   await disconnectMongoose()
 
   if (typeList === 'normal') {
