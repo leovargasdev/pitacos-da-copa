@@ -2,7 +2,11 @@ import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import FacebookProvider from 'next-auth/providers/facebook'
 
-import { UserModel, connectMongoose } from 'service/mongoose'
+import {
+  UserModel,
+  connectMongoose,
+  disconnectMongoose
+} from 'service/mongoose'
 
 export default NextAuth({
   providers: [
@@ -17,6 +21,7 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
+      console.log(user)
       await connectMongoose()
 
       const isUser = await UserModel.findOneAndUpdate(
@@ -28,26 +33,33 @@ export default NextAuth({
         // novo usuário
         await UserModel.create(user)
       }
+
+      await disconnectMongoose()
+
       return true
+    },
+    async session({ session }) {
+      await connectMongoose()
+
+      const { user } = session
+
+      if (user) {
+        const userMongo = await UserModel.findOne({ email: user.email })
+
+        await disconnectMongoose()
+
+        return {
+          ...session,
+          user: {
+            ...user,
+            ...userMongo._doc
+          }
+        }
+      }
+
+      await disconnectMongoose()
+
+      return session
     }
-    // async session({ session }) {
-    //   await connectMongoose()
-
-    //   const { user } = session
-
-    //   if (user) {
-    //     const userMongo = await UserModel.findOne({ email: user.email })
-
-    //     return {
-    //       ...session,
-    //       user: {
-    //         ...user,
-    //         ...userMongo._doc
-    //       }
-    //     }
-    //   }
-
-    //   return session
-    // }
   }
 })

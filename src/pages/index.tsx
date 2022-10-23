@@ -1,12 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next'
-import { useEffect } from 'react'
 
-import { GridMatches, ListMatches } from 'components/Matches'
-
-import { Match, TeamId } from 'types'
 import teams from 'data/teams.json'
 import matchesMock from 'data/matches.json'
-import { Pitaco } from 'components/Pitaco'
+
+import { Match, TeamId } from 'types'
+import { BetProvider } from 'hook/useBet'
+import { GridMatches, ListMatches } from 'components/Matches'
 
 interface PageProps {
   matches: Match[]
@@ -14,11 +13,11 @@ interface PageProps {
 
 const HomePage: NextPage<PageProps> = ({ matches }) => (
   <div>
-    <ListMatches matches={matches} />
-    <span style={{ height: 100, display: 'block' }} />
-    <GridMatches matches={matches} />
-
-    <Pitaco />
+    <BetProvider>
+      <ListMatches matches={matches} />
+      <span style={{ height: 100, display: 'block' }} />
+      <GridMatches matches={matches} />
+    </BetProvider>
   </div>
 )
 

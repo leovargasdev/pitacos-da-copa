@@ -1,5 +1,6 @@
 [
   {
+      "_id": "6349c3fac4bc30131f83c489",
       "teamA": {
           "id": "brasil",
           "score": 9
@@ -13,6 +14,7 @@
       "status": "active"
   },
   {
+      "_id": "6349c5cac4bc30131f83c48c",
       "teamA": {
           "id": "arabia-saudita",
           "score": 5
@@ -26,6 +28,7 @@
       "status": "finished"
   },
   {
+      "_id": "6349c5eac4bc30131f83c48e",
       "teamA": {
           "id": "catar",
           "score": 0
@@ -39,6 +42,7 @@
       "status": "active"
   },
   {
+      "_id": "6349c7a2c4bc30131f83c490",
       "teamA": {
           "id": "camaroes",
           "score": 1
@@ -52,6 +56,7 @@
       "status": "active"
   },
   {
+      "_id": "6349d954c4bc30131f83c49a",
       "teamA": {
           "id": "holanda",
           "score": 1
