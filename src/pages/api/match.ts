@@ -1,7 +1,11 @@
 import { getSession } from 'next-auth/react'
 import type { NextApiResponse, NextApiRequest } from 'next'
 
-import { connectMongoose, MatchModel } from 'service/mongoose'
+import {
+  connectMongoose,
+  disconnectMongoose,
+  MatchModel
+} from 'service/mongoose'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -10,17 +14,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
+  const session = await getSession({ req })
+
+  if (!session?.user && session?.user.role !== 'admin') {
+    return res.status(401).send('Unauthorized')
+  }
+
   try {
-    console.log('chegoooooooou na api', req.body)
-    // const session = await getSession({ req })
-
-    // if (!session?.user) {
-    //   return res.status(401).send('Unauthorized')
-    // }
-
     await connectMongoose()
 
     const match = await MatchModel.create(req.body)
+
+    await disconnectMongoose()
 
     return res.status(200).json({
       _id: match._id.toString(),

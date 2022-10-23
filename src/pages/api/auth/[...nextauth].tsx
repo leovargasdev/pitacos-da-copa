@@ -21,7 +21,6 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
-      console.log(user)
       await connectMongoose()
 
       const isUser = await UserModel.findOneAndUpdate(
@@ -30,7 +29,6 @@ export default NextAuth({
       )
 
       if (!isUser) {
-        // novo usuário
         await UserModel.create(user)
       }
 
@@ -39,13 +37,11 @@ export default NextAuth({
       return true
     },
     async session({ session }) {
-      await connectMongoose()
-
       const { user } = session
 
       if (user) {
+        await connectMongoose()
         const userMongo = await UserModel.findOne({ email: user.email })
-
         await disconnectMongoose()
 
         return {
@@ -56,8 +52,6 @@ export default NextAuth({
           }
         }
       }
-
-      await disconnectMongoose()
 
       return session
     }
