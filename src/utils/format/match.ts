@@ -36,6 +36,7 @@ export const getMatches = async (typeList: TypeList): Promise<Match[]> => {
       ...teams[match.teamB.id as TeamId]
     },
     _id: match._id.toString(),
-    date: String(match.date)
+    date: String(match.date),
+    isBet: false
   }))
 }

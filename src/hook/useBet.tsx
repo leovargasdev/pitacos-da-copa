@@ -32,11 +32,15 @@ export const BetProvider = ({ children }: ProviderProps) => {
   }
 
   const onSubmit = async (data: any) => {
-    await api.post('/bet', {
-      match_id: selectedMatch?._id,
-      scoreTeamA: Number(data.teamA),
-      scoreTeamB: Number(data.teamB)
-    })
+    try {
+      await api.post('/bet', {
+        match_id: selectedMatch?._id,
+        scoreTeamA: Number(data.teamA),
+        scoreTeamB: Number(data.teamB)
+      })
+    } catch (err) {
+      console.log(err)
+    }
 
     handleCloseBet()
   }

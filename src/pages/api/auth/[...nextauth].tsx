@@ -5,7 +5,8 @@ import FacebookProvider from 'next-auth/providers/facebook'
 import {
   UserModel,
   connectMongoose,
-  disconnectMongoose
+  disconnectMongoose,
+  BetModel
 } from 'service/mongoose'
 
 export default NextAuth({
@@ -42,13 +43,28 @@ export default NextAuth({
       if (user) {
         await connectMongoose()
         const userMongo = await UserModel.findOne({ email: user.email })
+
+        const betsMongo = await BetModel.find({ user_id: userMongo._id })
+
+        const bets = betsMongo.reduce((acc, bet) => {
+          const matchId = String(bet.match_id)
+
+          acc[matchId] = {
+            scoreTeamA: bet.scoreTeamA,
+            scoreTeamB: bet.scoreTeamB
+          }
+
+          return acc
+        }, {})
+
         await disconnectMongoose()
 
         return {
           ...session,
           user: {
             ...user,
-            ...userMongo._doc
+            ...userMongo._doc,
+            bets
           }
         }
       }

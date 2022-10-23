@@ -11,4 +11,5 @@ export interface Match {
   type: string
   date: string
   status: 'active' | 'finished'
+  isBet: boolean
 }

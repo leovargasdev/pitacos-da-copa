@@ -39,7 +39,7 @@ export const BetForm = () => {
             </fieldset>
 
             <fieldset className={styles.team}>
-              <label htmlFor="scoreTeamB">{selectedMatch.teamA.name}</label>
+              <label htmlFor="scoreTeamB">{selectedMatch.teamB.name}</label>
               <Input name="teamB" defaultValue={selectedMatch.teamB.score} />
             </fieldset>
 

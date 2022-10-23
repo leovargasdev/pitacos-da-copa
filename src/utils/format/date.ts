@@ -6,8 +6,7 @@ const dateFnsOptions = {
 }
 
 const FORMATS = {
-  normal: "EEEEEE, dd/MM 'às' HH'h'mm",
-  normal2: "EEEEEE dd/MM HH'h'mm"
+  normal: "EEEEEE dd/MM HH'h'mm"
 }
 
 type TypeFormat = keyof typeof FORMATS
