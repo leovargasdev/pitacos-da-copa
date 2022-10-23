@@ -1,11 +1,18 @@
 .container {
   position: fixed;
   right: 16px;
-  bottom: 0;
+  bottom: -500px;
   width: 400px;
+  z-index: 5;
+
+  transition: all 0.4s;
 
   ::before {
     content: ''
+  }
+
+  &[aria-hidden="false"] {
+    bottom: 0;
   }
 }
 
@@ -13,7 +20,7 @@
   position: relative;
   background: var(--link);
   border-radius: 8px 8px 0 0;
-  padding: 40px 24px 64px;
+  padding: 16px 24px 64px;
 
   display: flex;
   flex-direction: column;
@@ -22,12 +29,16 @@
 
   .close {
     position: absolute;
-    top: 20px;
+    top: 24px;
     right: 24px;
   }
 
   h1 {
-    margin-bottom: 32px;
+    letter-spacing: -1px;
+    font-family: 'Andika';
+    text-transform: uppercase;
+    
+    margin-bottom: 8px;
   }
 }
 
@@ -35,11 +46,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  row-gap: 12px;
-
-  // padding: 10px 16px;
-  // border-radius: 10px;
-  // background: rgba(#000, 0.1);
+  row-gap: 8px;
 
   width: 100%;
   border: none;
@@ -49,7 +56,7 @@
   }
 
   input {
-    padding: 14px 16px;
+    padding: 10px 16px;
 
     text-align: right;
     font-size: 1.125rem;
@@ -58,8 +65,8 @@
 
 .button__submit {
   width: 100%;
-  padding: 24px 0;
-  border-radius: 10px;
+  padding: 14px 0;
+  border-radius: 6px;
   background: rgba(#000, 0.2);
 
   font-size: 1.125rem;
