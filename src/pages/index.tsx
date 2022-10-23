@@ -12,13 +12,11 @@ interface PageProps {
 }
 
 const HomePage: NextPage<PageProps> = ({ matches }) => (
-  <div>
-    <BetProvider>
-      <ListMatches matches={matches} />
-      <span style={{ height: 100, display: 'block' }} />
-      <GridMatches matches={matches} />
-    </BetProvider>
-  </div>
+  <BetProvider>
+    <ListMatches matches={matches} />
+    <span style={{ height: 100, display: 'block' }} />
+    <GridMatches matches={matches} />
+  </BetProvider>
 )
 
 export const getServerSideProps: GetServerSideProps = async () => {

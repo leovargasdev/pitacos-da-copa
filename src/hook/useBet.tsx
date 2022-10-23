@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/react'
 import React, { createContext, useContext, useState } from 'react'
 
 import api from 'service/api'
@@ -20,18 +19,10 @@ interface ProviderProps {
 }
 
 export const BetProvider = ({ children }: ProviderProps) => {
-  const { data } = useSession()
-
   const [isOpen, setIsOpen] = useState(false)
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null)
 
   const handleOpenBet = (match: Match): void => {
-    console.log(data?.user._id)
-
-    if (data?.user) {
-      return
-    }
-
     setSelectedMatch(match)
     setIsOpen(true)
   }
