@@ -1,130 +1,24 @@
 .container {
-  position: relative;
-
-  width: 100%;
-  height: 100vh;
-
-  display: grid;
-  grid-template-columns: 1fr 640px;
-
-  @media(max-width: 1266px) {
-    grid-template-columns: 1fr 450px;
-  }
-
-  @media(max-width: 900px) {
-    display: block;
-  }
-}
-
-.logo {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  z-index: 2;
-
-  > svg {
-    width: auto;
-    height: 40px;
-  }
-
-  @media(max-width: 650px) {
-    top: 20px;
-    left: 20px;
-
-    > svg {
-      width: 65vw;
-      height: auto;
-    }
-  }
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  opacity: 0.6;
-  border-radius: 0 60px 60px 0;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-
-  filter: grayscale(0.4);
-}
-
-.content {
-  padding: 80px 60px 0;
-
-  display: flex;
-  flex-direction: column;
-
-  @media(max-width: 1266px) {
-    padding: 80px 32px 0;
-  }
-
-  @media(max-width: 900px) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    border-radius: 16px 16px 0 0;
-    padding: 32px 32px 80px;
-    background: var(--background);
-  }
-
-  @media(max-width: 650px) {
-    padding: 32px 16px 80px;
-  }
-}
-
-.info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 16px;
 
-  width: 100%;
-  margin: auto 0;
+  margin: auto;
+  max-width: 600px;
 
   h1 {
     font-size: 2rem;
     line-height: 3rem;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
-
-    color: var(--text);
+    max-width: 400px;
   }
 
   hr {
     width: 100%;
     border: 0;
-    border-top: 1px solid var(--link-dark);
-    margin: 24px 0;
-  }
-
-  @media(max-width: 1266px) {
-    h1 {
-      font-size: 1.75rem;
-      line-height: 2.5rem;
-    }
-  }
-
-  @media(max-width: 900px) {
-    max-width: 600px;
-    margin: 0 auto;
-
-    h1 {
-      max-width: 400px;
-    }
-  }
-
-  @media(max-width: 650px) {
-    h1 {
-      font-size: 1.25rem;
-      line-height: 2rem;
-    }
-
-    hr {
-      margin: 12px 0;
-    }
+    border-top: 1px solid var(--background-dark);
+    margin: 32px 0;
   }
 }
 
@@ -133,8 +27,6 @@
 
   display: flex;
   column-gap: 16px;
-
-  padding: 0 20px;
 
   @media(max-width: 650px) {
     flex-direction: column;
@@ -161,7 +53,7 @@
     }
 
     &.github {
-      border-color: #4078c0;
+      border-color: #468deb;
       
       &:hover {
         background: #4078c0;

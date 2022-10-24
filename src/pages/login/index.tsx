@@ -9,49 +9,31 @@ import styles from './styles.module.scss'
 
 const LoginPage = () => (
   <div className={styles.container}>
-    <SEO
-      tabName="Login"
-      title="Entrar na plataforma"
-      description="Aprimore as suas habilidades ao codificar os nossos desafios"
-    />
+    <SEO tabName="Login" title="Entrar na plataforma" description="" />
 
-    {/* <Link href="/">
-      <a className={styles.logo}>
-        <Logo />
-      </a>
-    </Link> */}
+    <h1>Seja bem-vindo, faça o login para acessar a sua conta.</h1>
 
-    <div className={styles.image}>
-      <Image src="/banner-login.jpg" layout="fill" objectFit="cover" />
+    <hr />
+
+    <div className={styles.buttons}>
+      <button
+        type="button"
+        className={styles.github}
+        onClick={() => signIn('facebook')}
+      >
+        <FaFacebook />
+        Facebook
+      </button>
+
+      <button
+        type="button"
+        className={styles.google}
+        onClick={() => signIn('google')}
+      >
+        <FaGoogle />
+        Google
+      </button>
     </div>
-
-    <main className={styles.content}>
-      <div className={styles.info}>
-        <h1>Seja bem-vindo, faça o login para acessar a sua conta.</h1>
-
-        <hr />
-
-        <div className={styles.buttons}>
-          <button
-            type="button"
-            className={styles.github}
-            onClick={() => signIn('facebook')}
-          >
-            <FaFacebook />
-            Facebook
-          </button>
-
-          <button
-            type="button"
-            className={styles.google}
-            onClick={() => signIn('google')}
-          >
-            <FaGoogle />
-            Google
-          </button>
-        </div>
-      </div>
-    </main>
   </div>
 )
 
