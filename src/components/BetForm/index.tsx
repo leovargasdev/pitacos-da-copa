@@ -32,7 +32,7 @@ export const BetForm = () => {
               <FaTimes />
             </button>
 
-            <h1>Criar pitaco</h1>
+            <h1>{selectedMatch.isBet ? 'Atualizar' : 'Adicionar'} pitaco</h1>
 
             <fieldset className={styles.team}>
               <label htmlFor="scoreTeamA">{selectedMatch.teamA.name}</label>
@@ -45,7 +45,7 @@ export const BetForm = () => {
             </fieldset>
 
             <button className={styles.button__submit} type="submit">
-              Enviar pitaco
+              Salvar pitaco
             </button>
 
             {isLoading && <div className={styles.loading} />}

@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
           <meta property="og:site_name" content="Pitacos da Copa" />
           <meta name="author" content="Leonardo Luis de Vargas" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Andika:wght@700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&family=Andika:wght@700&display=swap"
             rel="stylesheet"
           />
 
