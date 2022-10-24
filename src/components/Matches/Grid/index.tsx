@@ -21,7 +21,7 @@ export const GridMatches = ({ matches }: PageProps) => {
             <div>
               <span>{match.type}</span>
               <time dateTime={new Date(match.date).toISOString()}>
-                {formatDate(match.date, 'normal2')}
+                {formatDate(match.date, 'normal')}
               </time>
             </div>
 
