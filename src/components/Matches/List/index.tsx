@@ -94,10 +94,12 @@ export const ListMatches = ({ matches }: PageProps) => {
                 <strong>Resultado:</strong> {match.result.scoreTeamA} x{' '}
                 {match.result.scoreTeamB}
               </p>
-              <p>
-                <strong>Total de pontos:</strong>{' '}
-                {data?.user.bets[match._id].points}
-              </p>
+              {data?.user.bets[match._id] && (
+                <p>
+                  <strong>Total de pontos:</strong>{' '}
+                  {data?.user.bets[match._id].points}
+                </p>
+              )}
             </div>
           )}
         </article>
