@@ -16,6 +16,40 @@
   }
 }
 
+.loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(#570A31, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: transparent;
+
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-left-color: var(--primary);
+
+    animation: rotation 1s linear infinite;
+    
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
 .form {
   position: relative;
   background: var(--link);

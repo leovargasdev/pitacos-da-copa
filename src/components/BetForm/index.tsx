@@ -7,7 +7,8 @@ import { Input } from 'components/Form'
 import styles from './styles.module.scss'
 
 export const BetForm = () => {
-  const { onSubmit, isOpen, handleCloseBet, selectedMatch } = useBet()
+  const { onSubmit, isOpen, handleCloseBet, selectedMatch, isLoading } =
+    useBet()
 
   const formMethods = useForm()
 
@@ -43,7 +44,11 @@ export const BetForm = () => {
               <Input name="teamB" defaultValue={selectedMatch.teamB.score} />
             </fieldset>
 
-            <button className={styles.button__submit}>Enviar pitaco</button>
+            <button className={styles.button__submit} type="submit">
+              Enviar pitaco
+            </button>
+
+            {isLoading && <div className={styles.loading} />}
           </form>
         </FormProvider>
       )}

@@ -6,6 +6,7 @@ import { BetForm } from 'components/BetForm'
 
 interface BetContextData {
   isOpen: boolean
+  isLoading: boolean
   onSubmit: (data: any) => void
   handleOpenBet: (match: Match) => void
   handleCloseBet: () => void
@@ -16,10 +17,13 @@ const BetContext = createContext({} as BetContextData)
 
 interface ProviderProps {
   children: React.ReactNode
+  updateMatch: (value: any) => void
 }
 
-export const BetProvider = ({ children }: ProviderProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+export const BetProvider = ({ children, updateMatch }: ProviderProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isLoading, setLoading] = useState<boolean>(false)
+
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null)
 
   const handleOpenBet = (match: Match): void => {
@@ -32,22 +36,35 @@ export const BetProvider = ({ children }: ProviderProps) => {
   }
 
   const onSubmit = async (data: any) => {
+    setLoading(true)
+
     try {
-      await api.post('/bet', {
+      const bet = {
         match_id: selectedMatch?._id,
         scoreTeamA: Number(data.teamA),
         scoreTeamB: Number(data.teamB)
-      })
+      }
+      await api.post('/bet', bet)
+
+      updateMatch(bet)
     } catch (err) {
       console.log(err)
     }
 
+    setLoading(false)
     handleCloseBet()
   }
 
   return (
     <BetContext.Provider
-      value={{ handleOpenBet, isOpen, onSubmit, handleCloseBet, selectedMatch }}
+      value={{
+        handleOpenBet,
+        isOpen,
+        onSubmit,
+        handleCloseBet,
+        selectedMatch,
+        isLoading
+      }}
     >
       {children}
       <BetForm />

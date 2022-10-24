@@ -1,12 +1,12 @@
-import { GetServerSideProps, NextPage } from 'next'
+import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
+import { GetStaticProps, NextPage } from 'next'
 
 import { Match } from 'types'
 import { SEO } from 'components/SEO'
 import { BetProvider } from 'hook/useBet'
 import { getMatches } from 'utils/format/match'
 import { GridMatches, ListMatches } from 'components/Matches'
-import { useSession } from 'next-auth/react'
-import { useEffect, useMemo } from 'react'
 
 interface PageProps {
   matches: Match[]
@@ -14,46 +14,67 @@ interface PageProps {
 
 const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
   const { data } = useSession()
+  const [matches, setMatches] = useState(matchesDefault)
 
-  const matches = useMemo(() => {
+  useEffect(() => {
     const userBets = data?.user.bets
 
     if (userBets && Object.keys(userBets).length > 0) {
-      return matchesDefault.map(match => {
-        const isBet = userBets[match._id]
+      setMatches(
+        matchesDefault.map(match => {
+          const isBet = userBets[match._id]
 
-        if (isBet) {
+          if (isBet) {
+            return {
+              ...match,
+              isBet: true,
+              teamA: { ...match.teamA, score: isBet.scoreTeamA },
+              teamB: { ...match.teamB, score: isBet.scoreTeamB }
+            }
+          }
+
+          return match
+        })
+      )
+    }
+  }, [data?.user])
+
+  const updateMatch = (matchUpdate: any) => {
+    setMatches(state =>
+      state.map(match => {
+        if (match._id === matchUpdate.match_id) {
           return {
             ...match,
             isBet: true,
-            teamA: { ...match.teamA, score: isBet.scoreTeamA },
-            teamB: { ...match.teamB, score: isBet.scoreTeamB }
+            teamA: { ...match.teamA, score: matchUpdate.scoreTeamA },
+            teamB: { ...match.teamB, score: matchUpdate.scoreTeamB }
           }
         }
 
         return match
       })
-    }
-    return matchesDefault
-  }, [data?.user])
+    )
+  }
 
   return (
-    <BetProvider>
+    <BetProvider updateMatch={updateMatch}>
       <SEO
         tabName="Página inicial"
         title="Pitacos da copa 2022"
         description="Quer descobrir quem é o melhor palpiteiro entre os seus amigos, parentes ou colegas da firma? Pitacos da Copa é um prático gerenciador de bolões online."
       />
       <ListMatches matches={matches} />
-      {/* <span style={{ height: 100, display: 'block' }} />
-      <GridMatches matches={matches} /> */}
     </BetProvider>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const matches = await getMatches('detailed')
-  return { props: { matches } }
+
+  return {
+    props: { matches },
+    revalidate: 60 * 60 * 2
+  }
 }
 
 export default HomePage
