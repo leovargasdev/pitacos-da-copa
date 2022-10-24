@@ -19,7 +19,7 @@ export const AvatarMenu = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className={styles.user__avatar}>
-        {user?.image ? (
+        {user.image ? (
           <Image src={user.image} layout="fill" objectFit="cover" />
         ) : (
           <span>
