@@ -35,6 +35,10 @@ export const getMatches = async (typeList: TypeList): Promise<Match[]> => {
       score: match.teamB.score,
       ...teams[match.teamB.id as TeamId]
     },
+    result: {
+      scoreTeamA: match.teamA.score,
+      scoreTeamB: match.teamB.score
+    },
     _id: match._id.toString(),
     date: String(match.date),
     isBet: false

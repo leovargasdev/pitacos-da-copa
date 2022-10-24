@@ -4,6 +4,7 @@ export type UserRole = 'admin' | 'participant'
 
 interface Bet {
   [key: string]: {
+    points: number
     scoreTeamA: number
     scoreTeamB: number
   }

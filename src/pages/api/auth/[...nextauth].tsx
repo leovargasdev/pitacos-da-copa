@@ -50,6 +50,7 @@ export default NextAuth({
           const matchId = String(bet.match_id)
 
           acc[matchId] = {
+            points: bet.points,
             scoreTeamA: bet.scoreTeamA,
             scoreTeamB: bet.scoreTeamB
           }

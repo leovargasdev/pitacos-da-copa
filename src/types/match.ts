@@ -12,4 +12,8 @@ export interface Match {
   date: string
   status: 'active' | 'finished'
   isBet: boolean
+  result: {
+    scoreTeamA: number
+    scoreTeamB: number
+  }
 }

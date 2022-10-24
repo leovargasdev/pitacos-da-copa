@@ -40,10 +40,12 @@ export const BetProvider = ({ children, updateMatch }: ProviderProps) => {
 
     try {
       const bet = {
+        match_date: selectedMatch?.date,
         match_id: selectedMatch?._id,
         scoreTeamA: Number(data.teamA),
         scoreTeamB: Number(data.teamB)
       }
+
       await api.post('/bet', bet)
 
       updateMatch(bet)

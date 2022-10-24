@@ -1,3 +1,4 @@
+import { addHours, isPast } from 'date-fns'
 import { getSession } from 'next-auth/react'
 import type { NextApiResponse, NextApiRequest } from 'next'
 
@@ -14,6 +15,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!session?.user) {
     return res.status(401).send('Unauthorized')
+  }
+
+  const matchDate = addHours(new Date(req.body.match_date), 2)
+
+  if (isPast(matchDate)) {
+    return res.status(401).send('The betting period has ended')
   }
 
   const user_id = session.user._id
