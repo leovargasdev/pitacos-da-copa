@@ -38,7 +38,7 @@ export const ListMatches = ({ matches }: PageProps) => {
               </div>
 
               <strong>{match.teamA.name}</strong>
-              <span>{match.teamA.score}</span>
+              <span>{match.isBet ? match.teamA.score : '-'}</span>
             </div>
 
             <span>VS</span>
@@ -53,7 +53,7 @@ export const ListMatches = ({ matches }: PageProps) => {
               </div>
 
               <strong>{match.teamB.name}</strong>
-              <span>{match.teamB.score}</span>
+              <span>{match.isBet ? match.teamB.score : '-'}</span>
             </div>
           </div>
 
