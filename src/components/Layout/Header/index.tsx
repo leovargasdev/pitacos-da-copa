@@ -1,40 +1,57 @@
-import { signOut, useSession } from 'next-auth/react'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+
 import styles from './styles.module.scss'
+import { AvatarMenu } from '../AvatarMenu'
+import { Logo } from 'components/Logo'
 
 export const Header = () => {
-  const { data } = useSession()
-
-  const user = data?.user
+  const { status } = useSession()
 
   return (
-    <header className={styles.layout__header}>
-      <div className={styles.layout__headerContent}>
-        <span>Logo</span>
+    <header className={styles.header}>
+      <div className={styles.header__content}>
+        <Link href="/">
+          <a className={styles.header__logo}>
+            <Logo />
+          </a>
+        </Link>
 
         <nav>
-          <ul>
-            <li className={styles.active}>Home</li>
-            <li>Grupos</li>
-            <li>Ranking</li>
-            <li>Perfil</li>
+          <ul className={styles.navigation}>
+            <li>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ranking">
+                <a>Ranking</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/meus-pitacos">
+                <a>Meus pitacos</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/sobre">
+                <a>Sobre</a>
+              </Link>
+            </li>
           </ul>
         </nav>
 
-        {/* {user ? (
-          <button
-            type="button"
-            className={styles.signIn}
-            onClick={() => signOut()}
-          >
-            Sair
-          </button>
+        {status === 'authenticated' ? (
+          <AvatarMenu />
         ) : (
           <Link href="/login">
-            <a className={styles.signIn}>Acessar conta</a>
+            <a className={styles.header__signIn.concat(' button')}>
+              Acessar conta
+            </a>
           </Link>
-        )} */}
+        )}
       </div>
     </header>
   )

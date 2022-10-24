@@ -1,0 +1,74 @@
+.user__avatar {
+  position: relative;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+
+  overflow: hidden;
+  background: transparent;
+  border-color: transparent;
+
+  span {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+    background: var(--link-dark);
+
+    svg {
+      margin: auto;
+      width: 28px;
+      height: auto;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: 4px;
+
+  padding: 4px;
+  width: 130px;
+  border-radius: 6px;
+  background: var(--background-dark);
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+
+  strong {
+    padding: 0 14px;
+
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  border-radius: 4px;
+  padding: 8px 14px;
+
+  span {
+    display: flex;
+    width: 24px;
+
+    svg {
+      margin: auto;
+    }
+  }
+
+  &:hover, &:focus {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.separator {
+  margin: 8px 0;
+  height: 1px;
+  background: var(--text-placeholder);
+}
