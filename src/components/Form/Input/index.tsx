@@ -11,6 +11,6 @@ export const Input = ({ name, ...rest }: InputProps) => {
   const { register } = useFormContext()
 
   return (
-    <input id={name} {...rest} {...register(name)} className={styles.input} />
+    <input id={name} {...register(name)} {...rest} className={styles.input} />
   )
 }

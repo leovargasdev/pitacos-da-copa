@@ -16,6 +16,11 @@ export const BetForm = () => {
     formMethods.reset()
   }, [selectedMatch])
 
+  const formatScore = (fieldName: string, value: string) => {
+    const formattedValue = value.replace(/\D/g, '')
+    formMethods.setValue(fieldName, formattedValue)
+  }
+
   return (
     <div className={styles.container} aria-hidden={!isOpen}>
       {selectedMatch && (
@@ -40,6 +45,7 @@ export const BetForm = () => {
                 name="teamA"
                 defaultValue={selectedMatch.teamA.score}
                 maxLength={2}
+                onChange={e => formatScore('teamA', e.target.value)}
               />
             </fieldset>
 
@@ -49,6 +55,7 @@ export const BetForm = () => {
                 name="teamB"
                 defaultValue={selectedMatch.teamB.score}
                 maxLength={2}
+                onChange={e => formatScore('teamA', e.target.value)}
               />
             </fieldset>
 
