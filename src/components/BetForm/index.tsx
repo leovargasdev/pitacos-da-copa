@@ -55,7 +55,7 @@ export const BetForm = () => {
                 name="teamB"
                 defaultValue={selectedMatch.teamB.score}
                 maxLength={2}
-                onChange={e => formatScore('teamA', e.target.value)}
+                onChange={e => formatScore('teamB', e.target.value)}
               />
             </fieldset>
 
