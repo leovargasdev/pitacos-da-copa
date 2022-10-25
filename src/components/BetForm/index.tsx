@@ -17,8 +17,8 @@ export const BetForm = () => {
   }, [selectedMatch])
 
   const formatScore = (fieldName: string, value: string) => {
-    const formattedValue = value.replace(/\D/g, '')
-    formMethods.setValue(fieldName, formattedValue)
+    const formattedValue = Number(value.replace(/\D/g, ''))
+    formMethods.setValue(fieldName, Math.max(0, formattedValue))
   }
 
   return (
