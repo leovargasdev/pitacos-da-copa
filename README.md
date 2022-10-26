@@ -1,4 +1,4 @@
-<h1 align="center">Boilerplate NextJs</h1>
+<h1 align="center">Boilerplate NextJss</h1>
 
 ## 💻 Projeto
 
