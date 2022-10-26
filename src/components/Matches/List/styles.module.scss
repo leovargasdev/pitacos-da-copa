@@ -46,15 +46,15 @@
     text-transform: uppercase;
   }
 
-  span {
-    text-align: center;
-    font-size: 0.75rem;
+  // span {
+  //   text-align: center;
+  //   font-size: 0.75rem;
 
-    margin-top: 2px;
-    padding: 4px 10px;
-    border-radius: 8px;
-    background: var(--background-dark);
-  }
+  //   margin-top: 2px;
+  //   padding: 4px 10px;
+  //   border-radius: 8px;
+  //   background: var(--background-dark);
+  // }
 }
 
 .match__content {
@@ -63,7 +63,7 @@
 
   display: flex;
   align-items: center;
-  column-gap: 24px;
+  column-gap: 28px;
 
   position: relative;
   overflow: hidden;
@@ -79,20 +79,20 @@
     font-family: var(--font-bold);
   }
 
-  // .status {
-  //   position: absolute;
-  //   top: -5px;
-  //   left: 0;
-  //   right: 0;
-  //   margin: 0 auto;
+  .status {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 
-  //   padding: 3px 0;
-  //   background: var(--background-dark);
-  //   border-radius: 8px;
-  //   width: 100px;
-  //   text-align: center;
-  //   font-size: 0.75rem;
-  // }
+    padding: 3px 0;
+    background: var(--background-dark);
+    border-radius: 2px;
+    width: 140px;
+    text-align: center;
+    font-size: 0.75rem;
+  }
 }
 
 .team {
@@ -159,15 +159,60 @@
   }
 }
 
-.aaa {
+.match__resume {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  row-gap: 4px;
+  align-items: stretch;
+  column-gap: 20px;
 
   width: 200px;
+  height: 100%;
 
-  p {
-    font-size: 1.125rem;
+  span, > p {
+    border-radius: 4px;
+    background: var(--background-dark);
+    box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+    }
+
+    strong {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    span {
+      font-size: 1.25rem;
+      font-family: var(--font-bold);
+  
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--background-dark);
+      box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
+    }
+  }
+
+  .bet__points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 12px;
+
+    strong {
+      font-size: 2.5rem;
+      line-height: 2rem;
+      font-family: var(--font-bold);
+    }
   }
 }
