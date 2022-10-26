@@ -20,7 +20,10 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__content}>
         <Link href="/">
-          <a className={styles.header__logo}>
+          <a
+            className={styles.header__logo}
+            aria-label="Link para a página inicial"
+          >
             <Logo />
           </a>
         </Link>

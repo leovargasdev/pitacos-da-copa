@@ -17,11 +17,7 @@ export const ListMatches = ({ matches }: PageProps) => {
   const { status, data } = useSession()
 
   const isDisableBet = (matchDate: string): boolean => {
-    if (status !== 'authenticated') {
-      return true
-    }
-
-    return isPast(new Date(matchDate))
+    return isPast(new Date(matchDate)) || status !== 'authenticated'
   }
 
   return (
@@ -34,24 +30,29 @@ export const ListMatches = ({ matches }: PageProps) => {
             <time className={styles.match__date}>
               {formatDate(match.date, 'normal')}
             </time>
+
+            {match.status === 'finished' && (
+              <span className={styles.status}>PONTUAÇÃO GERADA</span>
+            )}
+
+            {match.status === 'active' && isPast(new Date(match.date)) && (
+              <span className={styles.status}>EM ANDAMENTO</span>
+            )}
           </div>
 
           <div className={styles.match__content}>
-            {match.status === 'finished' && (
-              <span className={styles.status}>PARTIDA ENCERRADA</span>
-            )}
-
             <div className={styles.team}>
               <div className={styles.team__image}>
                 <Image
                   src={match.teamA.image}
                   layout="fill"
                   objectFit="cover"
+                  alt={`Bandeira do time ${match.teamA.name}`}
                 />
               </div>
 
               <strong>{match.teamA.name}</strong>
-              <span>{match.isBet ? match.teamA.score : '2'}</span>
+              <span>{match.isBet ? match.teamA.score : '-'}</span>
             </div>
 
             <span className={styles.versus}>VS</span>
@@ -62,15 +63,16 @@ export const ListMatches = ({ matches }: PageProps) => {
                   src={match.teamB.image}
                   layout="fill"
                   objectFit="cover"
+                  alt={`Bandeira do time ${match.teamB.name}`}
                 />
               </div>
 
               <strong>{match.teamB.name}</strong>
-              <span>{match.isBet ? match.teamB.score : '5'}</span>
+              <span>{match.isBet ? match.teamB.score : '-'}</span>
             </div>
           </div>
 
-          {match.status === 'active' ? (
+          {match.status === 'active' && !isPast(new Date(match.date)) && (
             <>
               <button
                 type="button"
@@ -88,17 +90,17 @@ export const ListMatches = ({ matches }: PageProps) => {
                 <BsCheckCircleFill />
               </small>
             </>
-          ) : (
+          )}
+
+          {match.status === 'finished' && (
             <div className={styles.match__resume}>
-              {data?.user.bets[match._id] && (
-                <p
-                  className={styles.bet__points}
-                  title="Total de pontos marcados no palpite"
-                >
-                  <strong>{data?.user.bets[match._id].points}</strong>
-                  <small>pontos</small>
-                </p>
-              )}
+              <p
+                className={styles.bet__points}
+                title="Total de pontos marcados no palpite"
+              >
+                <strong>{data?.user.bets[match._id]?.points || 0}</strong>
+                <small>pontos</small>
+              </p>
 
               <div>
                 <strong>Resultado</strong>
