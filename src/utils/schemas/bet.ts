@@ -21,6 +21,10 @@ export const BetSchema = new Schema<Bet>(
     },
     scoreTeamA: Number,
     scoreTeamB: Number,
+    public: {
+      type: Boolean,
+      default: false
+    },
     winnerTeam: {
       type: String,
       required: true,

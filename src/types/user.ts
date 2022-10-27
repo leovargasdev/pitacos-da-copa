@@ -13,9 +13,10 @@ interface Bet {
 export interface User {
   _id: Types.ObjectId
   name: string
+  description: string
   email: string
   image: string
   role: UserRole
-  score: number
+  groups: string[]
   bets: Bet
 }

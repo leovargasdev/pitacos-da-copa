@@ -7,6 +7,7 @@ export const UserSchema = new Schema<User>(
       type: String,
       required: true
     },
+    description: String,
     email: {
       type: String,
       unique: true,
@@ -14,15 +15,14 @@ export const UserSchema = new Schema<User>(
       lowercase: true
     },
     image: String,
+    groups: {
+      type: [String],
+      default: []
+    },
     role: {
       type: String,
       required: true,
       default: 'participant'
-    },
-    score: {
-      type: Number,
-      required: true,
-      default: 0
     }
   },
   {

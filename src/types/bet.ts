@@ -9,4 +9,5 @@ export interface Bet {
   scoreTeamA: number
   scoreTeamB: number
   winnerTeam: Winner
+  public: boolean
 }
