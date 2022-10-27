@@ -1,0 +1,140 @@
+.match__teams {
+  flex: 1;
+  max-width: 896px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--background-card);
+  box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
+
+  span {
+    font-weight: bold;
+    font-family: var(--font-bold);
+  }
+
+  @media(max-width: 768px) {
+    align-items: flex-start;
+    column-gap: 0;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+.team {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+
+  strong {
+    flex: 1;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+  }
+
+  span {
+    font-size: 2.5rem;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+    padding-right: 0;
+
+    strong {
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .team__image::before {
+      background: linear-gradient(90deg, rgb(110, 9, 58) 0%, transparent 100%);
+    }
+  }
+
+  @media(max-width: 768px) {
+    flex: 0;
+    display: grid;
+    gap: 4px 24px;
+    align-items: flex-start;
+    grid-template-columns: 1fr 1fr;
+    // background: gray;
+
+    strong {
+      font-size: 0.875rem;
+      line-height: 1rem;
+      padding-right: 0;
+      // background: pink;
+      text-align: center;
+      // width: 95px;
+    }
+
+    span {
+      font-size: 2rem;
+      line-height: 2rem;
+      grid-row: 1 / 3;
+      // background: blue;
+      grid-column-start: 2;
+    }
+
+    &.reverse {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      strong {
+        padding-right: 0;
+        text-align: center;
+      }
+
+      span {
+        grid-column-start: 1;
+      }
+    }
+  }
+}
+
+.team__image {
+  position: relative;
+  width: 110px;
+  height: 75px;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-90deg, rgb(110, 9, 60) 0%, transparent 100%);
+
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  @media(max-width: 768px) {
+    width: 40px;
+    height: 24px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0 auto;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.versus {
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+
+  @media(max-width: 768px) {
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    padding-top: 6px;
+  }
+}
