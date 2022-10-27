@@ -1,4 +1,5 @@
 import { Types } from 'mongoose'
+import { Winner } from './match'
 
 export interface Bet {
   _id: Types.ObjectId
@@ -7,5 +8,5 @@ export interface Bet {
   points: number
   scoreTeamA: number
   scoreTeamB: number
-  winnerTeam: string
+  winnerTeam: Winner
 }

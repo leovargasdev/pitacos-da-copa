@@ -26,6 +26,12 @@ export const MatchSchema = new Schema<Match>({
   },
   type: String,
   date: Date,
+  winnerTeam: {
+    type: String,
+    required: true,
+    default: 'draw',
+    enum: ['draw', 'teamA', 'teamB']
+  },
   status: {
     type: String,
     required: true,

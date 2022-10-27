@@ -5,8 +5,16 @@
 
   padding: 16px 24px;
   border-radius: 4px;
-  background: var(--background-card);
+  
   box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
+
+  &.active {
+    background: var(--background-card);
+  }
+
+  &.finished {
+    background: #0000007d;
+  }
 
   button {
     font-weight: 500;
@@ -21,6 +29,15 @@
       filter: brightness(0.9);
     }
   }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--background-dark);
 }
 
 .team {
