@@ -149,9 +149,8 @@
 .match__resume {
   display: flex;
   align-items: stretch;
-  column-gap: 20px;
 
-  width: 200px;
+  width: 170px;
   height: 100%;
 
   span, > p {
@@ -194,6 +193,7 @@
     align-items: center;
     justify-content: center;
 
+    margin: 0 auto;
     padding: 0 12px;
 
     strong {
