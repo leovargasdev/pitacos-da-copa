@@ -1,7 +1,7 @@
-import { GetServerSideProps, GetStaticProps, NextPage } from 'next'
-import Image from 'next/image'
-import { BetModel, connectMongoose } from 'service/mongoose'
 import { User } from 'types'
+import Image from 'next/image'
+import { GetStaticProps, NextPage } from 'next'
+import { BetModel, connectMongoose } from 'service/mongoose'
 
 import styles from './styles.module.scss'
 
@@ -22,15 +22,15 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
     <ul className={styles.ranking}>
       {ranking.map((item, index) => (
         <li key={item._id}>
-          <span className={styles.position}>{index + 1}</span>
-
           <div className={styles.content}>
+            <span className={styles.position}>{index + 1}º</span>
+
             <div className={styles.user__image}>
               <Image
                 src={item.user.image}
                 layout="fill"
                 objectFit="cover"
-                alt="Imagem do usuário"
+                alt={`Imagem de perfil do usuário ${item.user.name}`}
               />
             </div>
             <strong>{item.user.name}</strong>
