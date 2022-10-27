@@ -61,7 +61,7 @@ const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
       <SEO
         tabName="Página inicial"
         title="Pitacos da copa 2022"
-        description="Quer descobrir quem é o melhor palpiteiro entre os seus amigos, parentes ou colegas da firma? Pitacos da Copa é um prático gerenciador de bolões online."
+        description="Quer descobrir quem é o melhor palpiteiro entre os seus amigos, parentes ou colegas da firma? Faça login na nossa plataforma e comece a palpitar os jogos da copa do mundo de 2022"
       />
       <ListMatches matches={matches} />
     </BetProvider>

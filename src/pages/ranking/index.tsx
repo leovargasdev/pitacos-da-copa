@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { GetStaticProps, NextPage } from 'next'
 import { BetModel, connectMongoose } from 'service/mongoose'
 
+import { SEO } from 'components/SEO'
 import styles from './styles.module.scss'
 
 interface Ranking {
@@ -17,6 +18,8 @@ interface PageProps {
 
 const RankingPage: NextPage<PageProps> = ({ ranking }) => (
   <div className={styles.container}>
+    <SEO tabName="Ranking" title="Veja o Ranking dos palpiteiros" />
+
     <h1>Ranking</h1>
 
     <ul className={styles.ranking}>

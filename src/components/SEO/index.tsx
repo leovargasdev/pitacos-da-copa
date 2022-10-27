@@ -4,11 +4,16 @@ import { useRouter } from 'next/router'
 interface SEOProps {
   tabName: string
   title: string
-  description: string
+  description?: string
   image?: string | null
 }
 
-export const SEO = ({ tabName, title, description, image = '' }: SEOProps) => {
+export const SEO = ({
+  tabName,
+  title,
+  description = '',
+  image = ''
+}: SEOProps) => {
   const { asPath } = useRouter()
   const url = 'https://www.pitacosdacopa.com'.concat(asPath)
 
