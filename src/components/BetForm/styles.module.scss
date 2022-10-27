@@ -14,6 +14,11 @@
   &[aria-hidden="false"] {
     bottom: 0;
   }
+
+  @media(max-width: 650px) {
+    width: 100%;
+    right: 0;
+  }
 }
 
 .loading {
@@ -70,6 +75,12 @@
   h1 {
     margin-bottom: 8px;
     letter-spacing: -1px;
+  }
+
+  @media(max-width: 650px) {
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 }
 

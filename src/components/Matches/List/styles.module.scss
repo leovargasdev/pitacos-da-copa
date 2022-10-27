@@ -40,6 +40,12 @@
 }
 
 .bet__button-mobile {
+  display: none;
+
+  @media(max-width: 768px) {
+    display: block;
+  }
+
   width: 63px;
   height: 63px;
 
