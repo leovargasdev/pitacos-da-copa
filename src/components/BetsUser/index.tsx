@@ -19,7 +19,7 @@ export const BetsUser = ({ matches }: BetsUserProps) => (
             vs
             <span>{match.result.scoreTeamB}</span>
           </div>
-          <p>8 pontos</p>
+          <p>{match.points} pontos</p>
         </header>
 
         <MatchTeams {...match} />
