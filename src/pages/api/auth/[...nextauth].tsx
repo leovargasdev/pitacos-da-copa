@@ -24,10 +24,7 @@ export default NextAuth({
     async signIn({ user }) {
       await connectMongoose()
 
-      const isUser = await UserModel.findOneAndUpdate(
-        { email: user.email },
-        user
-      )
+      const isUser = await UserModel.findOne({ email: user.email })
 
       if (!isUser) {
         await UserModel.create(user)

@@ -32,7 +32,8 @@ const CreateMatchesPape: NextPage<PageProps> = ({ matches: data }) => {
       ...data,
       teamA: { id: data.teamA, score: 0 },
       teamB: { id: data.teamB, score: 0 },
-      date: new Date(data.date)
+      date: new Date(data.date),
+      status: 'active'
     }
 
     try {

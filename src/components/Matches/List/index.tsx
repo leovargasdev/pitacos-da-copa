@@ -65,7 +65,7 @@ export const ListMatches = ({ matches }: PageProps) => {
                 className={styles.bet__points}
                 title="Total de pontos marcados no palpite"
               >
-                <strong>{data?.user.bets[match._id]?.points || 13}</strong>
+                <strong>{data?.user.bets[match._id]?.points || 0}</strong>
                 <small>pontos</small>
               </p>
 

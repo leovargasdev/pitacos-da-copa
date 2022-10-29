@@ -16,7 +16,7 @@ export const MatchTeams = (match: Match) => (
       </div>
 
       <strong>{match.teamA.name}</strong>
-      <span>{match.isBet ? match.teamA.score : '2'}</span>
+      <span>{match.isBet ? match.teamA.score : '-'}</span>
     </div>
 
     <span className={styles.versus}>VS</span>
@@ -32,7 +32,7 @@ export const MatchTeams = (match: Match) => (
       </div>
 
       <strong>{match.teamB.name}</strong>
-      <span>{match.isBet ? match.teamB.score : '3'}</span>
+      <span>{match.isBet ? match.teamB.score : '-'}</span>
     </div>
   </div>
 )
