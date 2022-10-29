@@ -8,6 +8,29 @@ import teams from 'data/teams.json'
 
 type TypeList = 'normal' | 'detailed'
 
+interface GetInfoProps {
+  _doc: any
+}
+
+export const getInfoTeams = ({ _doc: match }: GetInfoProps): Match => ({
+  ...match,
+  teamA: {
+    score: match.teamA.score,
+    ...teams[match.teamA.id as TeamId]
+  },
+  teamB: {
+    score: match.teamB.score,
+    ...teams[match.teamB.id as TeamId]
+  },
+  result: {
+    scoreTeamA: match.teamA.score,
+    scoreTeamB: match.teamB.score
+  },
+  _id: match._id.toString(),
+  date: String(match.date),
+  isBet: false
+})
+
 export const getMatches = async (typeList: TypeList): Promise<Match[]> => {
   await connectMongoose()
   const matches = await MatchModel.find(
@@ -25,22 +48,5 @@ export const getMatches = async (typeList: TypeList): Promise<Match[]> => {
     }))
   }
 
-  return matches.map(match => ({
-    ...match._doc,
-    teamA: {
-      score: match.teamA.score,
-      ...teams[match.teamA.id as TeamId]
-    },
-    teamB: {
-      score: match.teamB.score,
-      ...teams[match.teamB.id as TeamId]
-    },
-    result: {
-      scoreTeamA: match.teamA.score,
-      scoreTeamB: match.teamB.score
-    },
-    _id: match._id.toString(),
-    date: String(match.date),
-    isBet: false
-  }))
+  return matches.map(getInfoTeams)
 }

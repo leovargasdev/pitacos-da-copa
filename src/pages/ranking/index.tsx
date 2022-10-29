@@ -5,6 +5,7 @@ import { BetModel, connectMongoose } from 'service/mongoose'
 
 import { SEO } from 'components/SEO'
 import styles from './styles.module.scss'
+import Link from 'next/link'
 
 interface Ranking {
   _id: string
@@ -39,10 +40,14 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
             <strong>{item.user.name}</strong>
           </div>
 
-          <p className={styles.points}>
-            <b>{item.points}</b>
-            <small>pontos</small>
-          </p>
+          <Link href={`/usuario/${item._id}/pitacos`}>
+            <a>
+              <p className={styles.points}>
+                <b>{item.points}</b>
+                <small>pontos</small>
+              </p>
+            </a>
+          </Link>
         </li>
       ))}
     </ul>

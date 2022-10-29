@@ -30,7 +30,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       await BetModel.findOneAndUpdate(
         { _id: bet._id },
         {
-          points: calculetePoints(bet, match)
+          points: calculetePoints(bet, match),
+          public: true
         }
       )
     })
