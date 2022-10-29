@@ -16,6 +16,10 @@ export const Header = () => {
     setOpenMenuMobile(false)
   }, [router.asPath])
 
+  useEffect(() => {
+    document.body.style.overflow = openMenuMobile ? 'hidden' : 'auto'
+  }, [openMenuMobile])
+
   return (
     <header className={styles.header}>
       <div className={styles.header__content}>

@@ -1,6 +1,7 @@
 .header {
   width: 100%;
   position: relative;
+  z-index: 5;
 
   display: flex;
   justify-content: center;
@@ -61,9 +62,9 @@
   @media(max-width: 650px) {
     justify-content: space-between;
 
-  .nav__button {
-    display: block;
-  }
+    .nav__button {
+      display: block;
+    }
 
     nav {
       border: 0;
@@ -162,6 +163,7 @@
 
   &[aria-expanded="true"] {
     span:nth-child(1) {
+      width: 70%;
       transform: rotate(-45deg) translateY(7px) translateX(-7px);
     }
     span:nth-child(2) {
@@ -169,6 +171,7 @@
     }
 
     span:nth-child(3) {
+      width: 70%;
       transform: rotate(45deg) translateY(-7px) translateX(-7px);
     }
   }
