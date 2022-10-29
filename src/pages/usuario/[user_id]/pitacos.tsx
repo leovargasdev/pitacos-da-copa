@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { GetServerSideProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import {
   BetModel,
   connectMongoose,
@@ -44,11 +44,15 @@ const UserPublicBets = ({ matches, user, totalPoints }: PageProps) => (
   </div>
 )
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  return { fallback: 'blocking', paths: [] }
+}
+
 interface ParamsProps {
   user_id: string
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   let user = null
   const { user_id } = params as unknown as ParamsProps
 
