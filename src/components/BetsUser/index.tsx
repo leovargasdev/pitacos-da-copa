@@ -10,19 +10,25 @@ interface BetsUserProps {
 
 export const BetsUser = ({ matches }: BetsUserProps) => (
   <section className={styles.matches}>
-    {matches.map(match => (
+    {matches.map((match, index) => (
       <article key={match._id} className={styles.match}>
         <header>
           <time>{formatDate(match.date, 'normal')}</time>
           <div className={styles.match__result}>
+            Resultado:
             <span>{match.result.scoreTeamA}</span>
             vs
             <span>{match.result.scoreTeamB}</span>
           </div>
-          <p>{match.points} pontos</p>
         </header>
 
-        <MatchTeams {...match} />
+        <div className={styles.content}>
+          <MatchTeams {...match} />
+          <span className={styles.bet__points}>
+            <b>{match.points}</b>
+            pontos
+          </span>
+        </div>
       </article>
     ))}
   </section>
