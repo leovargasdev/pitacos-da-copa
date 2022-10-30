@@ -32,6 +32,7 @@
 
   padding: 4px;
   width: 130px;
+  z-index: 100;
   border-radius: 6px;
   background: var(--background-dark);
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
@@ -49,8 +50,8 @@
   align-items: center;
   column-gap: 8px;
 
-  border-radius: 4px;
   padding: 8px 14px;
+  border-radius: 4px;
 
   span {
     display: flex;
@@ -63,7 +64,7 @@
 
   &:hover, &:focus {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--white);
   }
 }
 

@@ -19,6 +19,7 @@
 
 .avatarAndLogin {
   display: block;
+  z-index: 999;
 
   @media(max-width: 650px) {
     display: none;

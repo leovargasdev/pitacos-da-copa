@@ -17,7 +17,7 @@ export const AvatarMenu = () => {
   const user = data.user as User
 
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root defaultOpen>
       <DropdownMenu.Trigger className={styles.user__avatar}>
         {user.image ? (
           <Image
@@ -33,10 +33,10 @@ export const AvatarMenu = () => {
         )}
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Portal style={{ zIndex: 100 }}>
+      <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-          sideOffset={10}
+          sideOffset={12}
           className={styles.content}
         >
           <DropdownMenu.Item>
