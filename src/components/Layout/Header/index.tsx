@@ -51,7 +51,7 @@ export const Header = () => {
             </li>
             <li>
               <Link href="/sobre">
-                <a>Como jogar</a>
+                <a>Sobre</a>
               </Link>
             </li>
             <li className={styles.mobile}>

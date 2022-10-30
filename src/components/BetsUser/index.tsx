@@ -10,7 +10,7 @@ interface BetsUserProps {
 
 export const BetsUser = ({ matches }: BetsUserProps) => (
   <section className={styles.matches}>
-    {matches.map((match, index) => (
+    {matches.map(match => (
       <article key={match._id} className={styles.match}>
         <header>
           <time>{formatDate(match.date, 'normal')}</time>
