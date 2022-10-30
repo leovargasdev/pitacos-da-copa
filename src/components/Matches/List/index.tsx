@@ -41,7 +41,7 @@ export const ListMatches = ({ matches, seletedType }: PageProps) => {
                       </small>
                     ) : (
                       <small aria-disabled="true" title={'Partida sem pitaco'}>
-                        <BsFillBookmarkXFill size={12} /> Partida sem pitaco
+                        <BsFillBookmarkXFill size={12} /> Jogo sem pitaco
                       </small>
                     )}
 

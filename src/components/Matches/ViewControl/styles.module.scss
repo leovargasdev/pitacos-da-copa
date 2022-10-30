@@ -5,7 +5,7 @@
 
   padding: 2px 3px;
   border-radius: 6px;
-  border: 1px solid rgba(#fff, 0.1);
+  border: 1px solid var(--white);
   background: var(--background-dark);
 
   button {
@@ -14,7 +14,7 @@
     border-radius: 4px;
 
     &[aria-selected="true"] {
-      background: rgba(#fff, 0.08);
+      background: var(--white);
     }
   }
 }

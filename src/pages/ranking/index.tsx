@@ -1,11 +1,12 @@
-import { User } from 'types'
+import Link from 'next/link'
 import Image from 'next/image'
+import { IoMdTrophy } from 'react-icons/io'
 import { GetStaticProps, NextPage } from 'next'
 import { BetModel, connectMongoose } from 'service/mongoose'
 
+import { User } from 'types'
 import { SEO } from 'components/SEO'
 import styles from './styles.module.scss'
-import Link from 'next/link'
 
 interface Ranking {
   _id: string
@@ -18,17 +19,21 @@ interface PageProps {
 }
 
 const RankingPage: NextPage<PageProps> = ({ ranking }) => (
-  <div className={styles.container}>
+  <>
     <SEO tabName="Ranking" title="Veja o Ranking dos palpiteiros" />
 
-    <h1>Ranking</h1>
+    <div className={styles.info}>
+      <h1>
+        <IoMdTrophy /> Ranking
+      </h1>
+      <p>Veja a lista dos melhores pitaqueiros!</p>
+    </div>
 
     <ul className={styles.ranking}>
       {ranking.map((item, index) => (
         <li key={item._id}>
-          <div className={styles.content}>
-            <span className={styles.position}>{index + 1}º</span>
-
+          <div className={styles.position}>
+            <span>{index + 1}º</span>
             <div className={styles.user__image}>
               <Image
                 src={item.user.image}
@@ -51,7 +56,7 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
         </li>
       ))}
     </ul>
-  </div>
+  </>
 )
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -78,7 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { ranking },
-    revalidate: 60 * 60
+    revalidate: 60 * 60 * 6
   }
 }
 

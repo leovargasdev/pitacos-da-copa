@@ -72,7 +72,7 @@
 
     &:hover, &[aria-selected="true"] {
       cursor: pointer;
-      background: rgba(#fff, 0.1);
+      background: var(--white);
     }
   }
 

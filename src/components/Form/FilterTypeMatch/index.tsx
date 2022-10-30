@@ -14,12 +14,12 @@ interface Option {
 }
 
 export const FilterTypeMatch = ({ onFilter }: FilterTypeMatchProps) => {
-  const [active, setActive] = useState<boolean>(true)
+  const [active, setActive] = useState<boolean>(false)
   const [optionSelected, setOptionSelected] = useState<string>('')
 
   const onSelectedOption = (option: Option) => {
     onFilter(option.id)
-    setOptionSelected(option.name === 'Todas' ? '' : option.name)
+    setOptionSelected(option.name === 'Todos' ? '' : option.name)
     setActive(false)
   }
 

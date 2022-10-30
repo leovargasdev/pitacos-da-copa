@@ -1,9 +1,24 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 32px;
+.info {
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--white);
 
-  padding-bottom: 64px;
+  .info__text {
+    margin-right: auto;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+
+  p {
+    font-size: 1rem;
+    padding-left: 4px;
+    color: var(--secondary);
+  }
 }
 
 .ranking {
@@ -35,7 +50,7 @@
   }
 }
 
-.content {
+.position {
   display: flex;
   align-items: center;
 
@@ -43,14 +58,14 @@
     margin-left: 12px;
     text-transform: capitalize;
   }
-}
 
-.position {
-  width: 44px;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 700;
-  font-family: var(--font-bold);
+  span {
+    width: 44px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-bold);
+  }
 }
 
 .user__image {
