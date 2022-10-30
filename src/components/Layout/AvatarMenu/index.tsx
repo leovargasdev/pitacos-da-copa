@@ -17,7 +17,7 @@ export const AvatarMenu = () => {
   const user = data.user as User
 
   return (
-    <DropdownMenu.Root defaultOpen>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger className={styles.user__avatar}>
         {user.image ? (
           <Image
