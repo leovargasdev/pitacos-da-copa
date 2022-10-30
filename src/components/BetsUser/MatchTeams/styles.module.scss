@@ -36,11 +36,9 @@
 
   &.reverse {
     flex-direction: row-reverse;
-    padding-right: 0;
 
     strong {
       text-align: right;
-      padding-right: 10px;
     }
 
     .team__image::before {
