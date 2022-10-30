@@ -6,7 +6,8 @@ import { Match } from 'types'
 import { SEO } from 'components/SEO'
 import { BetProvider } from 'hook/useBet'
 import { getMatches } from 'utils/format/match'
-import { GridMatches, ListMatches } from 'components/Matches'
+import { FilterTypeMatch } from 'components/Form'
+import { GridMatches, ListMatches, ViewControl } from 'components/Matches'
 
 import styles from 'styles/home.module.scss'
 
@@ -70,30 +71,14 @@ const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
         title="Pitacos da copa 2022"
         description="Quer descobrir quem é o melhor palpiteiro entre os seus amigos, parentes ou colegas da firma? Faça login na nossa plataforma e comece a palpitar os jogos da copa do mundo de 2022"
       />
-      <div className={styles.filters}>
-        {[
-          'grupo-a',
-          'grupo-b',
-          'grupo-c',
-          'grupo-d',
-          'grupo-e',
-          'grupo-f',
-          'grupo-g',
-          'grupo-h'
-        ].map(type => (
-          <button
-            key={type}
-            type="button"
-            onClick={() => onFilterType(type)}
-            aria-label={`Botão para filtrar os jogos do tipo ${type.replace(
-              '-',
-              ' '
-            )}`}
-            aria-pressed={type === seletedType}
-          >
-            {type.replace('-', ' ')}
-          </button>
-        ))}
+      <div className={styles.info}>
+        <div className={styles.info__text}>
+          <h1>Lista dos jogos</h1>
+          <p>Navegue pelos jogos e faça os seus pitacos!</p>
+        </div>
+
+        <FilterTypeMatch onFilter={onFilterType} />
+        <ViewControl />
       </div>
       <ListMatches matches={matches} seletedType={seletedType} />
     </BetProvider>

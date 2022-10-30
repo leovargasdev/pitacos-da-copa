@@ -1,6 +1,6 @@
 import { isPast } from 'date-fns'
 import { useSession } from 'next-auth/react'
-import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsFillBookmarkStarFill, BsFillBookmarkXFill } from 'react-icons/bs'
 import { BiMessageSquareAdd } from 'react-icons/bi'
 
 import { Match } from 'types'
@@ -34,33 +34,33 @@ export const ListMatches = ({ matches, seletedType }: PageProps) => {
 
               {match.status === 'active' && !isPast(new Date(match.date)) && (
                 <>
-                  <button
-                    type="button"
-                    onClick={() => handleOpenBet(match)}
-                    disabled={isDisableBet(match.date)}
-                    className={styles.bet__button}
-                  >
-                    {match.isBet ? 'Atualizar' : 'Adicionar'} pitaco
-                  </button>
+                  <div className={styles.bet__button}>
+                    {match.isBet ? (
+                      <small title="Pitaco salvo">
+                        <BsFillBookmarkStarFill size={12} /> Pitaco salvo
+                      </small>
+                    ) : (
+                      <small aria-disabled="true" title={'Partida sem pitaco'}>
+                        <BsFillBookmarkXFill size={12} /> Partida sem pitaco
+                      </small>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => handleOpenBet(match)}
+                      disabled={isDisableBet(match.date)}
+                    >
+                      {match.isBet ? 'Atualizar' : 'Adicionar'} pitaco
+                    </button>
+                  </div>
 
                   <button
                     type="button"
                     onClick={() => handleOpenBet(match)}
-                    // disabled={isDisableBet(match.date)}
                     className={styles['bet__button-mobile']}
                   >
                     <BiMessageSquareAdd size={32} />
                   </button>
-
-                  <small
-                    aria-disabled={!match.isBet}
-                    className={styles.bet__status}
-                    title={
-                      match.isBet ? 'Pitaco salvo' : 'Ainda não fez o pitaco'
-                    }
-                  >
-                    <BsCheckCircleFill />
-                  </small>
                 </>
               )}
 
@@ -77,7 +77,8 @@ export const ListMatches = ({ matches, seletedType }: PageProps) => {
                   <div>
                     <strong>Resultado</strong>
                     <p>
-                      <span>{match.result.scoreTeamA}</span>x
+                      <span>{match.result.scoreTeamA}</span>
+                      vs
                       <span>{match.result.scoreTeamB}</span>
                     </p>
                   </div>

@@ -1,0 +1,11 @@
+[
+    { "id": "", "name": "Todos"},
+    { "id": "grupo-a", "name": "Grupo A"},
+    { "id": "grupo-b", "name": "Grupo B"},
+    { "id": "grupo-c", "name": "Grupo C"},
+    { "id": "grupo-d", "name": "Grupo D"},
+    { "id": "grupo-e", "name": "Grupo E"},
+    { "id": "grupo-f", "name": "Grupo F"},
+    { "id": "grupo-g", "name": "Grupo G"},
+    { "id": "grupo-h", "name": "Grupo H"}
+]

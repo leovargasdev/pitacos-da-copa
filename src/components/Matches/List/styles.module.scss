@@ -23,19 +23,36 @@
 }
 
 .bet__button {
-  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  row-gap: 4px;
+  
+  width: 170px;
   height: 100%;
-  border-radius: 4px;
-  background: var(--background-dark);
-  box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
 
-  &:disabled {
-    opacity: 0.8;
-    cursor: default;
+  small {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+
+    font-size: 0.75rem;
+
+    &[aria-disabled="true"] {
+      opacity: 0.4;
+    }
   }
 
-  @media(max-width: 768px) {
-    display: none;
+  button {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--background-dark);
+    box-shadow: rgb(0 0 0 / 12%) 1px 3px 6px 0px, rgb(0 0 0 / 14%) 0px 3px 6px;
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: default;
+    }
   }
 }
 

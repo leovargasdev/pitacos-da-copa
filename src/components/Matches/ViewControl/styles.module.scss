@@ -1,0 +1,20 @@
+.container__viewControl {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+
+  padding: 2px 3px;
+  border-radius: 6px;
+  border: 1px solid rgba(#fff, 0.1);
+  background: var(--background-dark);
+
+  button {
+    width: 38px;
+    height: 30px;
+    border-radius: 4px;
+
+    &[aria-selected="true"] {
+      background: rgba(#fff, 0.08);
+    }
+  }
+}

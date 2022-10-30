@@ -17,8 +17,14 @@ export const Layout = ({ children }: LayoutProps) => (
       <div>
         <p>
           Idealizado por{' '}
-          <a href="https://leonardovargas.dev">Leonardo Vargas</a>, feito com{' '}
-          <IoHeartSharp size={12} />
+          <a
+            href="https://www.leonardovargas.dev"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Leonardo Vargas
+          </a>
+          , feito com <IoHeartSharp size={12} />
         </p>
 
         <p>
