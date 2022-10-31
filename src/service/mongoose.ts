@@ -12,7 +12,7 @@ const MatchModel = models.Match || model('Match', MatchSchema)
 const BetModel = models.Bet || model('Bet', BetSchema)
 
 async function connectMongoose() {
-  await connect(urlMongo)
+  await connect(urlMongo, { authSource: 'admin', tls: true })
 }
 
 async function disconnectMongoose() {
