@@ -31,11 +31,19 @@
   row-gap: 4px;
 
   padding: 4px;
-  width: 130px;
+  width: 150px;
   z-index: 100;
   border-radius: 6px;
   background: var(--background-dark);
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--white);
 
   strong {
     padding: 0 14px;

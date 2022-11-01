@@ -4,8 +4,8 @@ import { signOut, useSession } from 'next-auth/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { FaSignOutAlt, FaUser, FaUserAstronaut } from 'react-icons/fa'
 
-import styles from './styles.module.scss'
 import { User } from 'types'
+import styles from './styles.module.scss'
 
 export const AvatarMenu = () => {
   const { data } = useSession()
@@ -39,6 +39,15 @@ export const AvatarMenu = () => {
           sideOffset={12}
           className={styles.content}
         >
+          <DropdownMenu.Group className={styles.user}>
+            <DropdownMenu.Label>
+              <strong>{user.name}</strong>
+            </DropdownMenu.Label>
+            <DropdownMenu.Label>
+              <strong>{user.email}</strong>
+            </DropdownMenu.Label>
+          </DropdownMenu.Group>
+
           <DropdownMenu.Item>
             <Link href="/usuario/perfil">
               <a className={styles.item}>
