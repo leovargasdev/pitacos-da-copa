@@ -27,7 +27,7 @@ const ProfilePage: NextPage<User> = user => {
 
   const addGroup = (e: FormEvent): void => {
     e.preventDefault()
-    if (groups.length < 5) {
+    if (groups.length < 5 && group.length >= 3) {
       setGroups(state => [...state, getSlugFromText(group)])
       setGroup('')
     }
