@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--background-card);
+  border: 1px solid var(--background-dark);
+
+  input {
+    border: 0;
+    outline: 0;
+    color: var(--primary);
+    background: transparent;
+
+    &::placeholder {
+      color: var(--secondary);
+    }
+  }
+}

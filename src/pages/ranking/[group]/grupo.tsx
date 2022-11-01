@@ -7,9 +7,6 @@ import { BetModel, connectMongoose } from 'service/mongoose'
 import { User } from 'types'
 import { SEO } from 'components/SEO'
 import styles from './styles.module.scss'
-import { useState } from 'react'
-import { getSlugFromText } from 'utils/format/string'
-import { useRouter } from 'next/router'
 
 interface Ranking {
   _id: string
@@ -28,7 +25,7 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
     <div className={styles.info}>
       <div>
         <h1>
-          <IoMdTrophy /> Ranking
+          <IoMdTrophy /> Ranking: Alameda dos devs
         </h1>
         <p>Veja a lista dos melhores pitaqueiros!</p>
       </div>
