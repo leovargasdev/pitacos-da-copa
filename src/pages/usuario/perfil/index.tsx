@@ -102,7 +102,7 @@ const ProfilePage: NextPage<User> = user => {
             onClick={useFormMethods.handleSubmit(onSubmit)}
           >
             <HiRefresh />
-            Atualizar Perfil
+            Salvar dados
           </button>
 
           {/* <h2>Seus pitacos</h2> */}

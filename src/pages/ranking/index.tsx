@@ -7,6 +7,9 @@ import { BetModel, connectMongoose } from 'service/mongoose'
 import { User } from 'types'
 import { SEO } from 'components/SEO'
 import styles from './styles.module.scss'
+import { FormEvent, useState } from 'react'
+import { getSlugFromText } from 'utils/format/string'
+import { useRouter } from 'next/router'
 
 interface Ranking {
   _id: string
@@ -18,46 +21,69 @@ interface PageProps {
   ranking: Ranking[]
 }
 
-const RankingPage: NextPage<PageProps> = ({ ranking }) => (
-  <>
-    <SEO tabName="Ranking" title="Veja o Ranking dos palpiteiros" />
+const RankingPage: NextPage<PageProps> = ({ ranking }) => {
+  const router = useRouter()
+  const [groupName, setGroupName] = useState<string>('')
 
-    <div className={styles.info}>
-      <h1>
-        <IoMdTrophy /> Ranking
-      </h1>
-      <p>Veja a lista dos melhores pitaqueiros!</p>
-    </div>
+  const goToGroup = (e: FormEvent): void => {
+    e.preventDefault()
 
-    <ul className={styles.ranking}>
-      {ranking.map((item, index) => (
-        <li key={item._id}>
-          <div className={styles.position}>
-            <span>{index + 1}º</span>
-            <div className={styles.user__image}>
-              <Image
-                src={item.user.image}
-                layout="fill"
-                objectFit="cover"
-                alt={`Imagem de perfil do usuário ${item.user.name}`}
-              />
+    const slugGroup = getSlugFromText(groupName)
+    router.push(`/ranking/${slugGroup}/grupo`)
+  }
+
+  return (
+    <>
+      <SEO tabName="Ranking" title="Veja o Ranking dos palpiteiros" />
+
+      <div className={styles.info}>
+        <div>
+          <h1>
+            <IoMdTrophy /> Ranking
+          </h1>
+          <p>Veja a lista dos melhores pitaqueiros!</p>
+        </div>
+
+        <form onSubmit={goToGroup}>
+          <input
+            type="text"
+            placeholder="digitar o nome do grupo"
+            onChange={e => setGroupName(e.target.value)}
+          />
+          <button type="submit">buscar</button>
+        </form>
+      </div>
+
+      <ul className={styles.ranking}>
+        {ranking.map((item, index) => (
+          <li key={item._id}>
+            <div className={styles.position}>
+              <span>{index + 1}º</span>
+              <div className={styles.user__image}>
+                <Image
+                  src={item.user.image}
+                  layout="fill"
+                  objectFit="cover"
+                  alt={`Imagem de perfil do usuário ${item.user.name}`}
+                />
+              </div>
+              <strong>{item.user.name}</strong>
             </div>
-            <strong>{item.user.name}</strong>
-          </div>
 
-          <Link href={`/usuario/${item._id}/pitacos`}>
-            <a>
-              <p className={styles.points}>
-                <b>{item.points}</b>
-                <small>pontos</small>
-              </p>
-            </a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </>
-)
+            <Link href={`/usuario/${item._id}/pitacos`}>
+              <a>
+                <p className={styles.points}>
+                  <b>{item.points}</b>
+                  <small>pontos</small>
+                </p>
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   await connectMongoose()
