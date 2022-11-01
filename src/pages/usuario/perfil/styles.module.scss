@@ -33,23 +33,6 @@
       font-size: 1.125rem;
     }
   }
-
-  button {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-
-    border-radius: 4px;
-    background: var(--background-dark);
-  }
-
-  > button {
-    align-self: center;
-    justify-content: center;
-    
-    margin-top: 20px;
-    padding: 12px 100px;
-  }
 }
 
 .user__groups {
@@ -61,6 +44,13 @@
   }
 
   button {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    border-radius: 4px;
+    background: var(--background-dark);
+
     padding: 4px 24px;
   }
 }
@@ -73,9 +63,70 @@
   list-style: none;
 
   li {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+
     font-size: 1rem;
     padding: 4px 12px;
     border-radius: 2px;
     background: var(--background-dark);
+
+    button {
+      height: 16px;
+    }
+  }
+}
+
+.button__submit {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  column-gap: 8px;
+
+  margin-top: 20px;
+  padding: 12px 100px;
+  border-radius: 4px;
+  background: var(--background-dark);
+  
+  position: relative;
+  transition: all 0.4s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    visibility: hidden;
+
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-left-color: #fff;
+
+    animation: rotation 1s linear infinite;
+    
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+
+  &:disabled {
+    opacity: 0.8;
+    color: var(--background-dark);
+
+    &::after {
+      visibility: visible;
+    }
   }
 }

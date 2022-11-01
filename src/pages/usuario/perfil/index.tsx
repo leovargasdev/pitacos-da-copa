@@ -1,52 +1,62 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { getSession, useSession } from 'next-auth/react'
+import { HiRefresh } from 'react-icons/hi'
+import { FormEvent, useState } from 'react'
+import { getSession } from 'next-auth/react'
+import { FaPlus, FaTimes } from 'react-icons/fa'
 import { GetServerSideProps, NextPage } from 'next'
 import { FormProvider, useForm } from 'react-hook-form'
-import { HiRefresh, HiPencil, HiTrash } from 'react-icons/hi'
 
 import { User } from 'types'
+import api from 'service/api'
 import { Input } from 'components/Form'
+import { getSlugFromText } from 'utils/format/string'
 
 import styles from './styles.module.scss'
-import { FaPlus } from 'react-icons/fa'
-import { useState } from 'react'
 
 const ProfilePage: NextPage<User> = user => {
   const router = useRouter()
+
   const useFormMethods = useForm({
     mode: 'all',
     defaultValues: user
   })
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [group, setGroup] = useState<string>('')
-  const [groups, setGroups] = useState<string[]>([])
+  const [groups, setGroups] = useState<string[]>(user.groups)
 
-  const addGroup = () => {
-    setGroups(state => [...state, group])
-    setGroup('')
+  const addGroup = (e: FormEvent): void => {
+    e.preventDefault()
+    if (groups.length < 5) {
+      setGroups(state => [...state, getSlugFromText(group)])
+      setGroup('')
+    }
   }
 
   const onSubmit = async (data: any): Promise<void> => {
+    setIsLoading(true)
+
     try {
-      console.log(data)
-      // await api.post('/user/update', data)
-      // toast.success('Sucesso', {
-      //   description: 'Os dados foram atualizados com sucesso'
-      // })
-      // router.push('/')
+      await api.post('/user/update', {
+        groups,
+        name: data.name
+      })
+      router.push('/')
     } catch (err) {
       console.log(err)
+    } finally {
+      setIsLoading(false)
     }
+  }
+
+  const removeGroup = (groupName: string): void => {
+    setGroups(state => state.filter(g => g !== groupName))
   }
 
   return (
     <section className={styles.container}>
       <FormProvider {...useFormMethods}>
-        <form
-          className={styles.form}
-          onSubmit={useFormMethods.handleSubmit(onSubmit)}
-        >
+        <form className={styles.form} onSubmit={addGroup}>
           <h2>Informações gerais</h2>
 
           <fieldset>
@@ -55,16 +65,19 @@ const ProfilePage: NextPage<User> = user => {
           </fieldset>
 
           <fieldset>
-            <label>Seus grupos</label>
+            <label>
+              Seus grupos <small>(limitado em 5 grupos)</small>
+            </label>
             <div className={styles.user__groups}>
               <Input
                 type="text"
                 name="groupName"
                 value={group}
+                maxLength={30}
                 placeholder="Nome do grupo"
                 onChange={e => setGroup(e.target.value)}
               />
-              <button type="button" onClick={addGroup}>
+              <button type="submit" onClick={addGroup}>
                 <FaPlus />
                 Adicionar
               </button>
@@ -72,17 +85,27 @@ const ProfilePage: NextPage<User> = user => {
 
             <ul className={styles.groups}>
               {groups.map(groupName => (
-                <li key={groupName}>{groupName}</li>
+                <li key={groupName}>
+                  {groupName}
+                  <button type="button" onClick={() => removeGroup(groupName)}>
+                    <FaTimes size={14} />
+                  </button>
+                </li>
               ))}
             </ul>
           </fieldset>
 
-          <h2>Seus pitacos</h2>
-
-          <button type="submit" className={styles.button__submit}>
+          <button
+            type="button"
+            disabled={isLoading}
+            className={styles.button__submit}
+            onClick={useFormMethods.handleSubmit(onSubmit)}
+          >
             <HiRefresh />
-            Atualizar
+            Atualizar Perfil
           </button>
+
+          {/* <h2>Seus pitacos</h2> */}
         </form>
       </FormProvider>
     </section>

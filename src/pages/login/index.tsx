@@ -23,7 +23,7 @@ const LoginPage = () => (
       />
     </figure>
 
-    <h1>Seja bem-vindo, faça login para acessar a sua conta.</h1>
+    <h1>Seja bem-vindo, faça o login para acessar a sua conta.</h1>
 
     <hr />
 
