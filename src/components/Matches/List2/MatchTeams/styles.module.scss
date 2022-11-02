@@ -24,8 +24,10 @@
     width: 3ch;
     outline: none;
     font-size: 2rem;
+    height: 48px;
     text-align: center;
-    
+    font-family: var(--font-bold);
+
     border-radius: 6px;
     background: transparent;
     border: 2px solid var(--background-dark);

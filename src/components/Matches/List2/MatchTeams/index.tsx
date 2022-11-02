@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Match } from 'types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import styles from './styles.module.scss'
 import api from 'service/api'
@@ -15,8 +15,13 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
 
   const [debounce, setDebounce] = useState<any>(null)
 
-  const [scoreA, setScoreA] = useState<number | string>(match.teamA.score || '')
-  const [scoreB, setScoreB] = useState<number | string>(match.teamB.score || '')
+  const [scoreA, setScoreA] = useState<number | string>('')
+  const [scoreB, setScoreB] = useState<number | string>('')
+
+  useEffect(() => {
+    setScoreA(match.teamA.score)
+    setScoreB(match.teamB.score)
+  }, [match])
 
   const setBet = async (value1: any, value2: any) => {
     if (typeof value1 === 'number' && typeof value2 === 'number') {

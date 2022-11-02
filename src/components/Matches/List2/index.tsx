@@ -22,6 +22,18 @@ export const ListMatches = ({ matches, seletedType }: PageProps) => {
               <MatchInfo {...match} />
 
               <MatchTeams {...match} isAuth={status === 'authenticated'} />
+
+              {match.status === 'finished' && (
+                <footer>
+                  <p>Resumo do pitaco:</p>
+                  <strong>
+                    2 <span>VS</span> 2
+                  </strong>
+                  <div>
+                    <strong>+5 PONTOS</strong>
+                  </div>
+                </footer>
+              )}
             </article>
           )
       )}

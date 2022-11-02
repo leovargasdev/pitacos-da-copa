@@ -9,6 +9,35 @@
 .match {
   display: flex;
   flex-direction: column;
-  row-gap: 6px;
+  row-gap: 4px;
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    strong, p {
+      font-size: 0.875rem;
+    }
+
+    p, div {
+      width: 160px;
+    }
+
+    > strong {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+    }
+
+    div {
+      display: flex;
+      justify-content: flex-end;
+
+      strong {
+        font-family: var(--font-bold);
+      }
+    }
+  }
 }
 
