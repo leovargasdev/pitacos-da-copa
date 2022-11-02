@@ -1,35 +1,40 @@
 import Image from 'next/image'
-import { Match } from 'types'
+import { isPast } from 'date-fns'
 import { useEffect, useState } from 'react'
 
-import styles from './styles.module.scss'
 import api from 'service/api'
-import { isPast } from 'date-fns'
+import { Match } from 'types'
+import styles from './styles.module.scss'
 
 interface MatchTeamsProps extends Match {
   isAuth: boolean
 }
+
+type ScoreType = number | string
 
 export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
   const isDisabledBet = isPast(new Date(match.date))
 
   const [debounce, setDebounce] = useState<any>(null)
 
-  const [scoreA, setScoreA] = useState<number | string>('')
-  const [scoreB, setScoreB] = useState<number | string>('')
+  const [scoreA, setScoreA] = useState<ScoreType>('')
+  const [scoreB, setScoreB] = useState<ScoreType>('')
 
   useEffect(() => {
-    setScoreA(match.teamA.score)
-    setScoreB(match.teamB.score)
-  }, [match])
+    if (isAuth) {
+      console.log(match)
+      setScoreA(match.teamA.score)
+      setScoreB(match.teamB.score)
+    }
+  }, [match.teamA.score, match.teamB.score])
 
-  const setBet = async (value1: any, value2: any) => {
-    if (typeof value1 === 'number' && typeof value2 === 'number') {
+  const setBet = async (scoreTeamA: ScoreType, scoreTeamB: ScoreType) => {
+    if (typeof scoreTeamA === 'number' && typeof scoreTeamB === 'number') {
       const bet = {
         match_date: match.date,
         match_id: match._id,
-        scoreTeamA: Number(value1),
-        scoreTeamB: Number(value2)
+        scoreTeamA: Number(scoreTeamA),
+        scoreTeamB: Number(scoreTeamB)
       }
 
       await api.post('/bet', bet)
@@ -72,6 +77,7 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
             type="text"
             value={scoreA}
             disabled={!isAuth}
+            maxLength={2}
             title={isAuth ? '' : 'É preciso fazer login'}
             onChange={e => formatScore('a', e.target.value)}
           />
@@ -99,6 +105,7 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
             type="text"
             value={scoreB}
             disabled={!isAuth}
+            maxLength={2}
             title={isAuth ? '' : 'É preciso fazer login'}
             onChange={e => formatScore('b', e.target.value)}
           />

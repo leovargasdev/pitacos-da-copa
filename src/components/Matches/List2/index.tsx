@@ -5,13 +5,14 @@ import { MatchInfo } from './MatchInfo'
 import { MatchTeams } from './MatchTeams'
 
 import styles from './styles.module.scss'
-interface PageProps {
+interface ListMatchesProps {
   matches: Match[]
   seletedType: string
 }
 
-export const ListMatches = ({ matches, seletedType }: PageProps) => {
+export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
   const { status } = useSession()
+  const isAuth = status === 'authenticated'
 
   return (
     <section className={styles.matches}>
@@ -21,9 +22,9 @@ export const ListMatches = ({ matches, seletedType }: PageProps) => {
             <article key={match._id} className={styles.match}>
               <MatchInfo {...match} />
 
-              <MatchTeams {...match} isAuth={status === 'authenticated'} />
+              <MatchTeams {...match} isAuth={isAuth} />
 
-              {match.status === 'finished' && (
+              {match.status === 'finished' && isAuth && (
                 <footer>
                   <p>Resumo do pitaco:</p>
                   <strong>

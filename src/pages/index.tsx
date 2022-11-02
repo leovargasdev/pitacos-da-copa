@@ -16,56 +16,41 @@ interface PageProps {
 }
 
 const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
-  const { data } = useSession()
+  const { status, data } = useSession()
   const [seletedType, setSeletedType] = useState<string>('')
   const [matches, setMatches] = useState(matchesDefault)
 
   useEffect(() => {
-    const userBets = data?.user.bets
+    if (status === 'authenticated') {
+      const userBets = data.user.bets
 
-    if (userBets && Object.keys(userBets).length > 0) {
-      setMatches(
-        matchesDefault.map(match => {
-          const isBet = userBets[match._id]
+      if (userBets && Object.keys(userBets).length > 0) {
+        setMatches(
+          matchesDefault.map(match => {
+            const isBet = userBets[match._id]
 
-          if (isBet) {
-            return {
-              ...match,
-              isBet: true,
-              teamA: { ...match.teamA, score: isBet.scoreTeamA },
-              teamB: { ...match.teamB, score: isBet.scoreTeamB }
+            if (isBet) {
+              return {
+                ...match,
+                isBet: true,
+                teamA: { ...match.teamA, score: isBet.scoreTeamA },
+                teamB: { ...match.teamB, score: isBet.scoreTeamB }
+              }
             }
-          }
 
-          return match
-        })
-      )
+            return match
+          })
+        )
+      }
     }
-  }, [data?.user])
-
-  const updateMatch = (matchUpdate: any) => {
-    setMatches(state =>
-      state.map(match => {
-        if (match._id === matchUpdate.match_id) {
-          return {
-            ...match,
-            isBet: true,
-            teamA: { ...match.teamA, score: matchUpdate.scoreTeamA },
-            teamB: { ...match.teamB, score: matchUpdate.scoreTeamB }
-          }
-        }
-
-        return match
-      })
-    )
-  }
+  }, [status])
 
   const onFilterType = (type: string): void => {
     setSeletedType(state => (state === type ? '' : type))
   }
 
   return (
-    <BetProvider updateMatch={updateMatch}>
+    <>
       <SEO
         tabName="Página inicial"
         title="Pitacos da copa 2022"
@@ -80,8 +65,8 @@ const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
         <FilterTypeMatch onFilter={onFilterType} />
         <ViewControl />
       </div>
-      <ListMatches matches={matches} seletedType={seletedType} />
-    </BetProvider>
+      <ListMatches matches={matches.slice(0, 1)} seletedType={seletedType} />
+    </>
   )
 }
 
