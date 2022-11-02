@@ -65,7 +65,7 @@ const HomePage: NextPage<PageProps> = ({ matches: matchesDefault }) => {
         <FilterTypeMatch onFilter={onFilterType} />
         <ViewControl />
       </div>
-      <ListMatches matches={matches.slice(0, 1)} seletedType={seletedType} />
+      <ListMatches matches={matches} seletedType={seletedType} />
     </>
   )
 }
