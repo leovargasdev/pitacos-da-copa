@@ -15,16 +15,16 @@ const AboutPage: NextPage = () => (
     <div className={styles.content}>
       <div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima cum
-          nobis error dignissimos facilis voluptatum maiores alias, hic quam ab
-          obcaecati recusandae ea ullam dolorem nihil ex reprehenderit quia
-          quaerat.
+          O pitacos da copa 2022 é projeto open source e totalmente gratuito.
+          Para fazer pitacos você precisa fazer login social na nossa
+          plataforma, temos suporte com contas do <strong>Google</strong> e do{' '}
+          <strong>Facebook</strong>.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima cum
-          nobis error dignissimos facilis voluptatum maiores alias, hic quam ab
-          obcaecati recusandae ea ullam dolorem nihil ex reprehenderit quia
-          quaerat.
+          Todo participante por padrão participará do{' '}
+          <strong>ranking geral</strong>, mas se você tiver interesse de criar
+          um ranking com o seu grupo de amigos ou de trabalho, é possível fazer
+          isso! Basta acessar o seu perfil e cadastrar o grupo na sua conta.
         </p>
       </div>
 
@@ -48,7 +48,8 @@ const AboutPage: NextPage = () => (
 
       <div>
         <h2>Participe do nosso sorteio</h2>
-        <p>
+        <p>EM BREVE MAIS INFORMAÇÕES 👀👀👀</p>
+        {/* <p>
           No momento está acontecendo o sorteio de uma camisa oficial da
           seleção, veja as regras para participar:
         </p>
@@ -66,7 +67,7 @@ const AboutPage: NextPage = () => (
         <p>
           O sorteiro será realizado no dia 00 de Dezembro de 2022 às 00h00min em
           live na twitch.
-        </p>
+        </p> */}
       </div>
 
       <div>
