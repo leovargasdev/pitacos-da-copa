@@ -1,0 +1,15 @@
+.match__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  time {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  strong {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

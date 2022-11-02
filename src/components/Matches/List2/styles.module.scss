@@ -1,0 +1,14 @@
+.matches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+
+  width: 100%;
+}
+
+.match {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
