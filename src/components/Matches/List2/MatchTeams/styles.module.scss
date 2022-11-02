@@ -12,6 +12,10 @@
     font-weight: bold;
     font-family: var(--font-bold);
   }
+
+  @media(max-width: 768px) {
+    column-gap: 8px;
+  }
 }
 
 .team {
@@ -61,6 +65,26 @@
       background: linear-gradient(90deg, rgb(110, 9, 58) 0%, transparent 100%);
     }
   }
+
+  @media(max-width: 768px){
+    padding: 2px;
+    column-gap: 8px;
+
+    input {
+      height: 34px;
+      font-size: 1.25rem;
+    }
+
+    strong {
+      font-size: 0.875rem;
+      line-height: 1rem;
+    }
+
+    span {
+      font-size: 1.25rem;
+      padding-bottom: 0;
+    }
+  }
 }
 
 .team__image {
@@ -80,11 +104,10 @@
   }
 
   @media(max-width: 768px) {
-    width: 40px;
-    height: 24px;
-    border-radius: 6px;
+    width: 50px;
+    height: 34px;
+    border-radius: 4px;
     overflow: hidden;
-    margin: 0 auto;
 
     &::before {
       display: none;
@@ -97,8 +120,6 @@
   letter-spacing: -1px;
 
   @media(max-width: 768px) {
-    font-size: 0.875rem;
-    letter-spacing: 0;
-    padding-top: 6px;
+    font-size: 1rem;
   }
 }

@@ -4,6 +4,11 @@
   gap: 32px;
 
   width: 100%;
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }
 
 .match {
@@ -36,6 +41,12 @@
 
       strong {
         font-family: var(--font-bold);
+      }
+    }
+
+    @media(max-width: 768px) {
+      strong, p {
+        font-size: 0.75rem;
       }
     }
   }

@@ -78,7 +78,7 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
         )}
       </div>
 
-      <span className={styles.versus}>VS</span>
+      <span className={styles.versus}>X</span>
 
       <div className={`${styles.team} ${styles.reverse}`}>
         <div className={styles.team__image}>

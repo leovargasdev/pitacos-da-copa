@@ -3,13 +3,22 @@
   align-items: center;
   justify-content: space-between;
 
-  time {
+  time, strong {
     font-size: 1rem;
+  }
+
+  time {
     text-transform: capitalize;
   }
 
   strong {
     text-align: center;
     text-transform: uppercase;
+  }
+
+  @media(max-width: 768px) {
+    time, strong {
+      font-size: 0.875rem;
+    }
   }
 }
