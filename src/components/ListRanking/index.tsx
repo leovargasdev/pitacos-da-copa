@@ -22,7 +22,11 @@ export const ListRanking = ({ ranking }: ListRankingProps) => (
               alt={`Imagem de perfil do usuário ${item.user.name}`}
             />
           </div>
-          <strong>{item.user.name}</strong>
+          <Link href={`/usuario/${item._id}/pitacos`}>
+            <a>
+              <strong>{item.user.name}</strong>
+            </a>
+          </Link>
         </div>
 
         <Link href={`/usuario/${item._id}/pitacos`}>

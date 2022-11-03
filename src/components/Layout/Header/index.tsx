@@ -1,11 +1,11 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 
-import styles from './styles.module.scss'
-import { AvatarMenu } from '../AvatarMenu'
 import { Logo } from 'components/Logo'
-import { useRouter } from 'next/router'
+import { AvatarMenu } from '../AvatarMenu'
+import styles from './styles.module.scss'
 
 export const Header = () => {
   const router = useRouter()
@@ -52,11 +52,6 @@ export const Header = () => {
             <li>
               <Link href="/sobre">
                 <a>Sobre</a>
-              </Link>
-            </li>
-            <li className={styles.mobile}>
-              <Link href="/sobre">
-                <a>Meus palpites</a>
               </Link>
             </li>
           </ul>
