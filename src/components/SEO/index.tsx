@@ -28,6 +28,7 @@ export const SEO = ({ tabName, title, description = '' }: SEOProps) => {
       <meta property="twitter:description" content={description} />
 
       <meta property="og:image" content="https://pitacosdacopa.com/seo.png" />
+      <meta property="og:image:width" content="1500" />
       <meta
         property="twitter:image"
         content="https://pitacosdacopa.com/seo.png"
