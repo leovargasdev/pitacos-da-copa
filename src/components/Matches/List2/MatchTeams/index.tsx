@@ -1,18 +1,20 @@
 import Image from 'next/image'
 import { isPast } from 'date-fns'
 import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 import api from 'service/api'
 import { Match } from 'types'
 import styles from './styles.module.scss'
 
 interface MatchTeamsProps extends Match {
+  user: any
   isAuth: boolean
 }
 
 type ScoreType = number | string
 
-export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
+export const MatchTeams = ({ user, isAuth, ...match }: MatchTeamsProps) => {
   const isDisabledBet = isPast(new Date(match.date))
 
   const [debounce, setDebounce] = useState<any>(null)
@@ -22,27 +24,34 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
 
   useEffect(() => {
     if (isAuth) {
-      console.log(match)
       setScoreA(match.teamA.score)
       setScoreB(match.teamB.score)
     }
   }, [match.teamA.score, match.teamB.score])
 
+  const handleSaveBet = async (bet: any): Promise<unknown> =>
+    api.post('/bet', bet)
+
   const setBet = async (scoreTeamA: ScoreType, scoreTeamB: ScoreType) => {
     if (typeof scoreTeamA === 'number' && typeof scoreTeamB === 'number') {
       const bet = {
+        user_id: user,
         match_date: match.date,
         match_id: match._id,
         scoreTeamA: Number(scoreTeamA),
         scoreTeamB: Number(scoreTeamB)
       }
 
-      await api.post('/bet', bet)
+      toast.promise(handleSaveBet(bet), {
+        loading: `Salvando pitaco ${match.teamA.name} X ${match.teamB.name} ...`,
+        success: 'Palpite salvo com sucesso!',
+        error: 'Falha ao salvar pitaco'
+      })
     }
   }
 
   const formatScore = (type: string, value: string) => {
-    if (isAuth) {
+    if (isAuth && user) {
       clearTimeout(debounce)
       const formattedValue = Number(value.replace(/\D/g, ''))
 
@@ -59,6 +68,7 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
 
   return (
     <div className={styles.match__teams}>
+      <Toaster />
       <div className={styles.team}>
         <div className={styles.team__image}>
           <Image

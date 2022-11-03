@@ -11,7 +11,7 @@ interface ListMatchesProps {
 }
 
 export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
-  const { status } = useSession()
+  const { status, data } = useSession()
   const isAuth = status === 'authenticated'
 
   return (
@@ -22,13 +22,13 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
             <article key={match._id} className={styles.match}>
               <MatchInfo {...match} />
 
-              <MatchTeams {...match} isAuth={isAuth} />
+              <MatchTeams {...match} isAuth={isAuth} user={data?.user._id} />
 
               {match.status === 'finished' && isAuth && (
                 <footer>
                   <p>Resumo do pitaco:</p>
                   <strong>
-                    2 <span>VS</span> 2
+                    2 <span>X</span> 2
                   </strong>
                   <div>
                     <strong>+5 PONTOS</strong>

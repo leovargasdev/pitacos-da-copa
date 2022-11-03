@@ -16,8 +16,7 @@ export const BetsUser = ({ matches }: BetsUserProps) => (
           <time>{formatDate(match.date, 'normal')}</time>
           <div className={styles.match__result}>
             Resultado:
-            <span>{match.result.scoreTeamA}</span>
-            vs
+            <span>{match.result.scoreTeamA}</span>x
             <span>{match.result.scoreTeamB}</span>
           </div>
         </header>

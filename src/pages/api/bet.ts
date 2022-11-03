@@ -1,5 +1,4 @@
 import { addHours, isPast } from 'date-fns'
-import { getSession } from 'next-auth/react'
 import type { NextApiResponse, NextApiRequest } from 'next'
 
 import { BetModel, connectMongoose, disconnectMongoose } from 'service/mongoose'
@@ -11,22 +10,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  const session = await getSession({ req })
+  const { user_id, ...bet } = req.body
 
-  if (!session?.user) {
-    return res.status(401).send('Unauthorized')
-  }
-
-  const matchDate = addHours(new Date(req.body.match_date), 2)
+  const matchDate = addHours(new Date(bet.match_date), 2)
 
   if (isPast(matchDate)) {
     return res.status(401).send('The betting period has ended')
   }
 
-  const user_id = session.user._id
+  if (!user_id) {
+    return res.status(401).send('Unauthorized')
+  }
 
   try {
-    const bet = req.body
     let winnerTeam = 'draw'
 
     if (bet.scoreTeamA > bet.scoreTeamB) winnerTeam = 'teamA'
