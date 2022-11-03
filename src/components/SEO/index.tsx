@@ -5,15 +5,9 @@ interface SEOProps {
   tabName: string
   title: string
   description?: string
-  image?: string | null
 }
 
-export const SEO = ({
-  tabName,
-  title,
-  description = '',
-  image = ''
-}: SEOProps) => {
+export const SEO = ({ tabName, title, description = '' }: SEOProps) => {
   const { asPath } = useRouter()
   const url = 'https://www.pitacosdacopa.com'.concat(asPath)
 
@@ -29,18 +23,16 @@ export const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
 
+      <meta property="twitter:url" content="https://pitacosdacopa.com/" />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
 
-      {image && (
-        <>
-          <meta property="og:image" content={image} />
-          <meta property="og:image:width" content="1200" />
-
-          <meta property="twitter:image" content={image} />
-          <meta property="twitter:card" content="summary_large_image" />
-        </>
-      )}
+      <meta property="og:image" content="https://pitacosdacopa.com/seo.png" />
+      <meta
+        property="twitter:image"
+        content="https://pitacosdacopa.com/seo.png"
+      />
+      <meta property="twitter:card" content="summary_large_image" />
     </Head>
   )
 }
