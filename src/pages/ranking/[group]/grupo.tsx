@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { ranking, groupName: group.replace(/-/g, ' ') },
-    revalidate: 60 * 60 * 6
+    revalidate: 60 * 2
   }
 }
 
