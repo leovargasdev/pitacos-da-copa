@@ -4,7 +4,6 @@ import { GetStaticProps, NextPage } from 'next'
 
 import { Match } from 'types'
 import { SEO } from 'components/SEO'
-import { BetProvider } from 'hook/useBet'
 import { getMatches } from 'utils/format/match'
 import { FilterTypeMatch } from 'components/Form'
 import { GridMatches, ListMatches, ViewControl } from 'components/Matches'

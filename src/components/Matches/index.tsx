@@ -1,3 +1,3 @@
 export { GridMatches } from './Grid'
-export { ListMatches } from './List2'
+export { ListMatches } from './List'
 export { ViewControl } from './ViewControl'

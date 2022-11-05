@@ -1,10 +1,7 @@
 .match__teams {
-  flex: 1;
-  height: 100%;
-
   display: flex;
   align-items: center;
-  column-gap: 24px;
+  column-gap: 16px;
 
   overflow: hidden;
   border-radius: 4px;
@@ -17,11 +14,7 @@
   }
 
   @media(max-width: 768px) {
-    align-items: flex-start;
-    column-gap: 0;
-    justify-content: space-between;
-    padding: 10px;
-    width: 100%;
+    column-gap: 8px;
   }
 }
 
@@ -31,16 +24,34 @@
   align-items: center;
   column-gap: 12px;
 
-  strong {
-    flex: 1;
-    font-size: 1.5rem;
-    letter-spacing: 0.3px;
-    text-transform: capitalize;
+  input {
+    width: 3ch;
+    outline: none;
+    font-size: 2rem;
+    height: 48px;
+    text-align: center;
+    font-family: var(--font-bold);
+
+    border-radius: 6px;
+    background: transparent;
+    border: 2px solid var(--background-dark);
+
+    &:disabled {
+      opacity: 0.4;
+    }
   }
 
   span {
     font-size: 2.5rem;
     padding-bottom: 4px;
+  }
+
+  strong {
+    flex: 1;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
   }
 
   &.reverse {
@@ -55,47 +66,31 @@
     }
   }
 
-  @media(max-width: 768px) {
-    flex: 0;
-    display: grid;
-    gap: 4px 24px;
-    align-items: flex-start;
-    grid-template-columns: 1fr 1fr;
+  @media(max-width: 768px){
+    padding: 2px;
+    column-gap: 8px;
+
+    input {
+      height: 34px;
+      font-size: 1.25rem;
+    }
 
     strong {
       font-size: 0.875rem;
       line-height: 1rem;
-      padding-right: 0;
-      text-align: center;
     }
 
     span {
-      font-size: 2rem;
-      line-height: 2rem;
-      grid-row: 1 / 3;
-      grid-column-start: 2;
-    }
-
-    &.reverse {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      strong {
-        padding-right: 0;
-        text-align: center;
-      }
-
-      span {
-        grid-column-start: 1;
-      }
+      font-size: 1.25rem;
+      padding-bottom: 0;
     }
   }
 }
 
 .team__image {
   position: relative;
-  width: 110px;
-  height: 75px;
+  width: 100px;
+  height: 65px;
 
   &::before {
     content: '';
@@ -109,11 +104,10 @@
   }
 
   @media(max-width: 768px) {
-    width: 40px;
-    height: 24px;
-    border-radius: 6px;
+    width: 50px;
+    height: 34px;
+    border-radius: 4px;
     overflow: hidden;
-    margin: 0 auto;
 
     &::before {
       display: none;
@@ -126,8 +120,6 @@
   letter-spacing: -1px;
 
   @media(max-width: 768px) {
-    font-size: 0.875rem;
-    letter-spacing: 0;
-    padding-top: 6px;
+    font-size: 1rem;
   }
 }
