@@ -43,9 +43,6 @@ export const AvatarMenu = () => {
             <DropdownMenu.Label>
               <strong>{user.name}</strong>
             </DropdownMenu.Label>
-            <DropdownMenu.Label>
-              <strong>{user.email}</strong>
-            </DropdownMenu.Label>
           </DropdownMenu.Group>
 
           <DropdownMenu.Item>
