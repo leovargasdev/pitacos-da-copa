@@ -6,6 +6,19 @@
   min-height: 100vh;
 }
 
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 6px;
+
+  width: 100%;
+  padding: 6px 0;
+  background: var(--link);
+
+  font-weight: 600;
+}
+
 .layout__main {
   width: 100%;
   max-width: 1266px;
