@@ -1,6 +1,6 @@
+import axios from 'axios'
 import { IoMdTrophy } from 'react-icons/io'
 import { GetStaticProps, NextPage } from 'next'
-import { BetModel, connectMongoose } from 'service/mongoose'
 
 import { Ranking } from 'types'
 import { SEO } from 'components/SEO'
@@ -37,28 +37,12 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  await connectMongoose()
-
-  const ignoreFields = { createdAt: 0, updatedAt: 0, _id: 0, role: 0 }
-  let ranking = await BetModel.aggregate([
-    { $group: { _id: '$user_id', points: { $sum: '$points' } } },
-    {
-      $lookup: {
-        from: 'users',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'user',
-        pipeline: [{ $project: ignoreFields }]
-      }
-    },
-    { $unwind: '$user' },
-    { $sort: { points: -1 } }
-  ])
-
-  ranking = ranking.map(r => ({ ...r, _id: String(r._id) }))
+  const response = await axios.get('http://localhost:3000/api/ranking')
 
   return {
-    props: { ranking },
+    props: {
+      ranking: response.data
+    },
     revalidate: 60 * 2
   }
 }

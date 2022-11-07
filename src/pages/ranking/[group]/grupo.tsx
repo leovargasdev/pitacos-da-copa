@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   FaFacebookSquare,
   FaCheck,
@@ -11,7 +12,6 @@ import api from 'service/api'
 import { Ranking } from 'types'
 import { SEO } from 'components/SEO'
 import { ListRanking } from 'components/ListRanking'
-import { BetModel, connectMongoose } from 'service/mongoose'
 
 import styles from './styles.module.scss'
 
@@ -96,36 +96,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!params?.group) {
+  const group = params?.group as string
+
+  const response = await axios.get('http://localhost:3000/api/ranking', {
+    params: { group }
+  })
+
+  const isEmptyGroup = response.data.length === 0
+  if (isEmptyGroup) {
     return { props: {}, redirect: { destination: '/ranking' } }
   }
 
-  const group = params.group as string
-
-  await connectMongoose()
-
-  const fieldsIgnore = { createdAt: 0, updatedAt: 0, _id: 0, role: 0 }
-  let ranking = await BetModel.aggregate([
-    { $group: { _id: '$user_id', points: { $sum: '$points' } } },
-    {
-      $lookup: {
-        from: 'users',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'user',
-        pipeline: [{ $project: fieldsIgnore }]
-      }
-    },
-    { $unwind: '$user' },
-    { $sort: { points: -1 } },
-    { $match: { 'user.groups': { $in: [group] } } }
-  ])
-
-  ranking = ranking.map(r => ({ ...r, _id: String(r._id) }))
-
   return {
     props: {
-      ranking,
+      ranking: response.data,
       group: {
         slug: group,
         name: group.replace(/-/g, ' ')
