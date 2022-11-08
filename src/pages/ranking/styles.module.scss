@@ -23,4 +23,11 @@
     padding-left: 4px;
     color: var(--secondary);
   }
+
+  @media(max-width: 650px) {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 12px;
+    padding-bottom: 24px;
+  }
 }
