@@ -37,7 +37,7 @@ const RankingPage: NextPage<PageProps> = ({ ranking }) => (
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await axios.get('http://localhost:3000/api/ranking')
+  const response = await axios.get('https://pitacosdacopa.com/api/ranking')
 
   return {
     props: {
