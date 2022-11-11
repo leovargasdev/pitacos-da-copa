@@ -8,7 +8,7 @@ import { Match } from 'types'
 import styles from './styles.module.scss'
 
 interface MatchTeamsProps extends Match {
-  user: any
+  user: number
   isAuth: boolean
 }
 
@@ -51,7 +51,7 @@ export const MatchTeams = ({ user, isAuth, ...match }: MatchTeamsProps) => {
   }
 
   const formatScore = (type: string, value: string) => {
-    if (isAuth && user) {
+    if (isAuth && user !== 0) {
       clearTimeout(debounce)
       const formattedValue = Number(value.replace(/\D/g, ''))
 

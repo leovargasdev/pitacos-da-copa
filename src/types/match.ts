@@ -11,7 +11,7 @@ export interface Match {
   teamB: TeamMatch
   type: string
   date: string
-  status: 'active' | 'finished'
+  status: 'active' | 'finished' | 'progress'
   isBet: boolean
   points?: number // pontos do pitaco do usuário
   winnerTeam: Winner

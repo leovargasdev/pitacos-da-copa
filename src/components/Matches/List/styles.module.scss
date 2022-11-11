@@ -1,10 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 54px;
+
+  padding-bottom: 48px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+  
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--background-card);
+      box-shadow: rgba(0, 0, 0, 0.2) 1px 3px 4px 0px;
+
+      span {
+        padding: 8px 14px;
+        background: var(--background-dark);
+      }
+    }
+  }
+}
+
 .matches {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 
   width: 100%;
-  padding-bottom: 48px;
 
   @media(max-width: 768px) {
     grid-template-columns: 1fr;
