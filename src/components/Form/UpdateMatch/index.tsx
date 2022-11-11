@@ -10,7 +10,8 @@ import { getWinner } from 'utils/bet'
 
 const status = {
   active: 'Ativo',
-  finished: 'Finalizado'
+  finished: 'Finalizado',
+  progress: 'Andamento'
 }
 
 // FUNCIONALIDADE
