@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
   FaFacebookSquare,
   FaCheck,
@@ -11,6 +10,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import api from 'service/api'
 import { Ranking } from 'types'
 import { SEO } from 'components/SEO'
+import { getRanking } from 'utils/ranking'
 import { ListRanking } from 'components/ListRanking'
 
 import styles from './styles.module.scss'
@@ -98,18 +98,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const group = params?.group as string
 
-  const response = await axios.get('http://localhost:3000/api/ranking', {
-    params: { group }
-  })
+  const ranking = await getRanking(group)
 
-  const isEmptyGroup = response.data.length === 0
+  const isEmptyGroup = ranking.length === 0
+
   if (isEmptyGroup) {
     return { props: {}, redirect: { destination: '/ranking' } }
   }
 
   return {
     props: {
-      ranking: response.data,
+      ranking,
       group: {
         slug: group,
         name: group.replace(/-/g, ' ')
