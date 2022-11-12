@@ -38,7 +38,7 @@ const CreateMatchesPape: NextPage<PageProps> = ({ matches: data }) => {
 
     try {
       const response = await api.post('/match', match)
-      setMatches(state => [...state, response.data])
+      setMatches(state => [response.data, ...state])
     } catch (err) {
       console.log(err)
     }

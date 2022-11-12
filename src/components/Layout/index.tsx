@@ -1,5 +1,4 @@
 import { Header } from './Header'
-import { FaInfoCircle } from 'react-icons/fa'
 import { IoHeartSharp } from 'react-icons/io5'
 
 import styles from './styles.module.scss'
@@ -10,10 +9,10 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => (
   <div className={styles.layout}>
-    <span className={styles.alert}>
+    {/* <span className={styles.alert}>
       <FaInfoCircle />
       Os jogos oficiais serão publicados no dia 13 de Novembro
-    </span>
+    </span> */}
 
     <Header />
 

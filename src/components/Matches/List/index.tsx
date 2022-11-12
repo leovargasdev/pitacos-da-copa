@@ -44,21 +44,21 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
     return !seletedType || type === seletedType
   }
 
-  console.log(data?.user.bets)
+  const matchesInProgress = matches.filter(m => m.status === 'progress')
+  const matchesFinished = matches.filter(m => m.status === 'finished')
 
   return (
     <div className={styles.container}>
-      <section>
-        <h2>
-          <span>
-            <FaHourglassHalf size={20} />
-          </span>
-          JOGOS EM ANDAMENTO:
-        </h2>
-        <div className={styles.matches}>
-          {matches
-            .filter(m => m.status === 'progress')
-            .map(
+      {!!matchesInProgress.length && (
+        <section>
+          <h2>
+            <span>
+              <FaHourglassHalf size={20} />
+            </span>
+            JOGOS EM ANDAMENTO
+          </h2>
+          <div className={styles.matches}>
+            {matchesInProgress.map(
               match =>
                 isVisibleMatch(match.type) && (
                   <ItemMatch
@@ -69,14 +69,15 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
                   />
                 )
             )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       <section>
         <h2>
           <span>
             <FaCalendar size={20} />
           </span>
-          PRÓXIMOS JOGOS:
+          PRÓXIMOS JOGOS
         </h2>
         <div className={styles.matches}>
           {matches
@@ -99,12 +100,11 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
           <span>
             <FaTrophy size={22} />
           </span>
-          JOGOS FINALIZADOS:
+          JOGOS FINALIZADOS
         </h2>
-        <div className={styles.matches}>
-          {matches
-            .filter(m => m.status === 'finished')
-            .map(
+        {matchesFinished.length ? (
+          <div className={styles.matches}>
+            {matchesFinished.map(
               match =>
                 isVisibleMatch(match.type) && (
                   <ItemMatch
@@ -116,7 +116,10 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
                   />
                 )
             )}
-        </div>
+          </div>
+        ) : (
+          <span>No momento não temos jogos finalizados</span>
+        )}
       </section>
     </div>
   )
