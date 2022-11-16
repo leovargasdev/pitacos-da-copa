@@ -13,15 +13,14 @@ interface ListMatchesProps {
 
 interface ItemMatchProps extends Match {
   isAuth: boolean
-  user_id?: number
   bet?: any
 }
 
-const ItemMatch = ({ isAuth, user_id = 0, ...match }: ItemMatchProps) => (
+const ItemMatch = ({ isAuth, ...match }: ItemMatchProps) => (
   <article key={match._id} className={styles.match}>
     <MatchInfo {...match} />
 
-    <MatchTeams {...match} isAuth={isAuth} user={user_id} />
+    <MatchTeams {...match} isAuth={isAuth} />
     {match.status === 'finished' && isAuth && (
       <footer>
         <p>Resumo do pitaco:</p>
@@ -61,12 +60,7 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
             {matchesInProgress.map(
               match =>
                 isVisibleMatch(match.type) && (
-                  <ItemMatch
-                    key={match._id}
-                    isAuth={isAuth}
-                    user_id={Number(data?.user._id)}
-                    {...match}
-                  />
+                  <ItemMatch key={match._id} isAuth={isAuth} {...match} />
                 )
             )}
           </div>
@@ -85,12 +79,7 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
             .map(
               match =>
                 isVisibleMatch(match.type) && (
-                  <ItemMatch
-                    key={match._id}
-                    isAuth={isAuth}
-                    user_id={Number(data?.user._id)}
-                    {...match}
-                  />
+                  <ItemMatch key={match._id} isAuth={isAuth} {...match} />
                 )
             )}
         </div>
@@ -110,7 +99,6 @@ export const ListMatches = ({ matches, seletedType }: ListMatchesProps) => {
                   <ItemMatch
                     key={match._id}
                     isAuth={isAuth}
-                    user_id={Number(data?.user._id)}
                     bet={data?.user.bets[match._id]}
                     {...match}
                   />

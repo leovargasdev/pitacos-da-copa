@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { isPast } from 'date-fns'
 import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 import toast, { Toaster } from 'react-hot-toast'
 
 import api from 'service/api'
@@ -8,13 +9,13 @@ import { Match } from 'types'
 import styles from './styles.module.scss'
 
 interface MatchTeamsProps extends Match {
-  user: number
   isAuth: boolean
 }
 
 type ScoreType = number | string
 
-export const MatchTeams = ({ user, isAuth, ...match }: MatchTeamsProps) => {
+export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
+  const { data } = useSession()
   const isDisabledBet = isPast(new Date(match.date))
 
   const [debounce, setDebounce] = useState<any>(null)
@@ -33,9 +34,14 @@ export const MatchTeams = ({ user, isAuth, ...match }: MatchTeamsProps) => {
     api.post('/bet', bet)
 
   const setBet = async (scoreTeamA: ScoreType, scoreTeamB: ScoreType) => {
-    if (typeof scoreTeamA === 'number' && typeof scoreTeamB === 'number') {
+    const user_id = data?.user._id
+    if (
+      user_id &&
+      typeof scoreTeamA === 'number' &&
+      typeof scoreTeamB === 'number'
+    ) {
       const bet = {
-        user_id: user,
+        user_id,
         match_date: match.date,
         match_id: match._id,
         scoreTeamA: Number(scoreTeamA),
@@ -51,7 +57,7 @@ export const MatchTeams = ({ user, isAuth, ...match }: MatchTeamsProps) => {
   }
 
   const formatScore = (type: string, value: string) => {
-    if (isAuth && user !== 0) {
+    if (isAuth) {
       clearTimeout(debounce)
       const formattedValue = Number(value.replace(/\D/g, ''))
 
