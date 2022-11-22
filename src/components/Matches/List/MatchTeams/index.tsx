@@ -48,11 +48,20 @@ export const MatchTeams = ({ isAuth, ...match }: MatchTeamsProps) => {
         scoreTeamB: Number(scoreTeamB)
       }
 
-      toast.promise(handleSaveBet(bet), {
-        loading: `Salvando pitaco ${match.teamA.name} X ${match.teamB.name} ...`,
-        success: 'Palpite salvo com sucesso!',
-        error: 'Falha ao salvar pitaco'
-      })
+      toast.promise(
+        handleSaveBet(bet),
+        {
+          loading: `Salvando pitaco ${match.teamA.name} X ${match.teamB.name} ...`,
+          success: 'Palpite salvo com sucesso!',
+          error: 'Falha ao salvar pitaco'
+        },
+        {
+          style: {
+            borderRadius: '10px',
+            boxShadow: '0 3px 10px rgb(0 0 0 / 1%), 0 3px 3px rgb(0 0 0 / 1%)'
+          }
+        }
+      )
     }
   }
 

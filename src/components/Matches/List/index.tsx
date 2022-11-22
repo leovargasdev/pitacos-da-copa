@@ -21,6 +21,7 @@ const ItemMatch = ({ isAuth, ...match }: ItemMatchProps) => (
     <MatchInfo {...match} />
 
     <MatchTeams {...match} isAuth={isAuth} />
+
     {match.status === 'finished' && isAuth && (
       <footer>
         <p>Resumo do pitaco:</p>
