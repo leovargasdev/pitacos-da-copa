@@ -19,23 +19,17 @@ export const Layout = ({ children }: LayoutProps) => (
     <main className={styles.layout__main}>{children}</main>
 
     <footer className={styles.layout__footer}>
-      <div>
-        <p>
-          Idealizado por{' '}
-          <a
-            href="https://www.leonardovargas.dev"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Leonardo Vargas
-          </a>
-          , feito com <IoHeartSharp size={12} />
-        </p>
-
-        <p>
-          Gostou do projeto? <a href="/">Ajude na nossa vakinha</a>.
-        </p>
-      </div>
+      <p>
+        Idealizado por{' '}
+        <a
+          href="https://www.leonardovargas.dev"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Leonardo Vargas
+        </a>
+        , feito com <IoHeartSharp size={12} />
+      </p>
     </footer>
   </div>
 )

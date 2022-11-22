@@ -46,7 +46,7 @@ export const Header = () => {
             </li>
             <li>
               <Link href="/ranking">
-                <a>Times</a>
+                <a aria-disabled="true">Times</a>
               </Link>
             </li>
             <li>

@@ -47,30 +47,6 @@ const AboutPage: NextPage = () => (
       </div>
 
       <div>
-        <h2>Participe do nosso sorteio</h2>
-        <p>EM BREVE MAIS INFORMAÇÕES 👀👀👀</p>
-        {/* <p>
-          No momento está acontecendo o sorteio de uma camisa oficial da
-          seleção, veja as regras para participar:
-        </p>
-
-        <ul>
-          <li>
-            Marcar 3 amigos <a href="#">nesse post do instagram</a>
-          </li>
-          <li>
-            Ter doado pelo menos R$ 5,00 na <a href="#">nossa vakinha</a>.
-          </li>
-          <li>Ter realizado pelo menos um pitaco.</li>
-        </ul>
-
-        <p>
-          O sorteiro será realizado no dia 00 de Dezembro de 2022 às 00h00min em
-          live na twitch.
-        </p> */}
-      </div>
-
-      <div>
         <h2>Conheça mais sobre a nossa comunidade</h2>
         <p>
           <a
